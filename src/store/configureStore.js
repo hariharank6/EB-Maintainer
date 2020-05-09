@@ -1,7 +1,7 @@
 import {createStore, combineReducers} from 'redux'
 
 import servicesReducer from '../reducers/services'
-import suggestionsReducer from '../reducers/suggestion'
+import suggestionsReducer from '../reducers/suggestions'
 
 export default () => (
     createStore(
