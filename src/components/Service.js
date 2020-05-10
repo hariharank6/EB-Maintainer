@@ -1,6 +1,6 @@
 import React from 'react'
 
-export default Service = (props) => (
+export default (props) => (
     <div>
         {
             (props && props.serviceNo && props.units && props.rate && props.nickname && props.entryDate) &&

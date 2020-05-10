@@ -1,42 +1,69 @@
 const calculateRate = ({units}, {meterReading}) => {
     const subsidy = 150
+    let cost = 0
     const fixedPrice = [0, 20, 30, 50]
-    const usedUnits = meterReading - units
+    const usedUnits = units - meterReading
     if (usedUnits <= 100){
-        const cost = 150 + fixedPrice[0]
+        cost = 150 + fixedPrice[0]
     }
     else if (usedUnits <= 200){
-        const cost = (usedUnits * 1.5) + fixedPrice[1]
+        cost = (usedUnits * 1.5) + fixedPrice[1]
     }
     else if (usedUnits <= 500){
-        const cost = (100 * 1.5) + (100 * 2.0) + ((usedUnits - 200) * 3.0) + fixedPrice[2]
+        cost = (100 * 1.5) + (100 * 2.0) + ((usedUnits - 200) * 3.0) + fixedPrice[2]
     }
     else{
-        const cost = (100 * 1.5) + (100 * 3.5) + (300 * 4.6) + ((usedUnits - 500) * 6.6) + fixedPrice[3]
+        cost = (100 * 1.5) + (100 * 3.5) + (300 * 4.6) + ((usedUnits - 500) * 6.6) + fixedPrice[3]
     }
-    calculateRate = cost - subsidy
-    return calculatedRate
+    let finalPrice = cost - subsidy
+    return finalPrice
 }
 
 export default (state=[], action) => {
     switch(action.type) {
+        case "ADD_SERVICE":
+            if(state && action.data && action.data.serviceNo && action.data.units && action.data.billData && action.data.billData.meterReading && action.data.billData.billGeneratedDate){
+                let isServiceExist = false
+                let services = []
+                const calculatedPrice = calculateRate(action.data, action.data.billData)
+                action.data.rate = calculatedPrice
+                services = state.map((service) => {
+                    if (service.serviceNo == action.data.serviceNo) {
+                        service = Object.assign(service, action.data)
+                        isServiceExist = true
+                    }
+                })
+                if (!isServiceExist){
+                    services = [...state,action.data]
+                }
+                return services
+            }
+            else {
+                console.log("Insufficient data for ADD_SERVICE reducer")
+                return state
+            }
+
         case "ADD_UNIT" :
             if(state && action.data && action.data.serviceNo && action.data.units && action.data.entryDate) {
                 return state.map((service) => {
-                    if(service.serviceNo == action.data.serviceNo) {                        
-                        const calculatedRate = calculateRate(action, state.billData)
+                    if(service.serviceNo == action.data.serviceNo) {
+                        let clonedService = Object.assign([], service)
+                        const calculatedPrice = calculateRate(action.data, clonedService.billData)
                         
                         const pastUpdateData = {
-                            units: service.units,
-                            rate: service.rate,
-                            entryDate: service.entryDate,
-                            isValidEntry: (service.units < action.data.units ? true : false)
+                            units: clonedService.units,
+                            rate: clonedService.rate,
+                            entryDate: clonedService.entryDate,
+                            isValidEntry: (clonedService.units < action.data.units ? true : false)
                         }
 
-                        service.units = action.data.units
-                        service.entryDate = action.data.entryDate
-                        service.pastUpdates = [...service.pastUpdates, pastUpdateData]
+                        clonedService.units = action.data.units
+                        clonedService.entryDate = action.data.entryDate 
+                        clonedService.rate = calculatedPrice
+                        clonedService.pastUpdates = [...clonedService.pastUpdates, pastUpdateData]
+                        return clonedService
                     }
+                    console.log("service number doesnot match")
                     return service
                 })
             }
@@ -44,6 +71,7 @@ export default (state=[], action) => {
                 console.log("insufficient data for ADD_UNIT reducer")
                 return state
             }
+
         case "ADD_ALL_UNITS" :
             if(state && action.data && action.data.services && state.length == action.data.services.length) {
                 let clonedState = Object.assign([], state)
@@ -51,7 +79,7 @@ export default (state=[], action) => {
                 for(let stateIteration = 0; stateIteration < clonedState.length; stateIteration++) {
                     for(let actionIteration = 0; actionIteration < action.data.services.length; actionIteration++) {
                         if(clonedState[stateIteration].serviceNo == action.data.services[actionIteration].serviceNo) {
-                            const calculatedRate = calculateRate(action, state.billData)
+                            const calculatedRate = calculateRate(action, clonedState[stateIteration].billData)
 
                             const pastUpdateData = {
                                 units: clonedState[stateIteration].units,
