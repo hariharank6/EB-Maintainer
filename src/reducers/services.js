@@ -63,8 +63,7 @@ export default (state, action) => {
                 console.log("insufficient data for ADD_ALL_UNITS")
                 return state
             }
-            return ;
-        case "ADD_LAST_BILL_AMOUNT" :
-            return ;
+        default:
+            return state
     }
 }
