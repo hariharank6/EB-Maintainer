@@ -47,7 +47,7 @@ export default (state=[], action) => {
             if(state && action.data && action.data.serviceNo && action.data.units && action.data.entryDate) {
                 return state.map((service) => {
                     if(service.serviceNo == action.data.serviceNo) {
-                        let clonedService = Object.assign([], service)
+                        let clonedService = Object.assign({}, service)
                         const calculatedPrice = calculateRate(action.data, clonedService.billData)
                         
                         const pastUpdateData = {
@@ -63,7 +63,6 @@ export default (state=[], action) => {
                         clonedService.pastUpdates = [...clonedService.pastUpdates, pastUpdateData]
                         return clonedService
                     }
-                    console.log("service number doesnot match")
                     return service
                 })
             }

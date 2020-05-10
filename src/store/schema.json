@@ -1,39 +1,39 @@
 {
-    "services": [
-      {
-        "nickname": "",
-        "serviceNo": 23423,
-        "entryDate": "dd/mm/yy",
-        "currencyCode": "₹",
-        "units": 23,
-        "rate": 2342,
-        "pastUpdates": [
-          {
-            "units": 23,
-            "rate": 423,
-            "entryDate": "dd/mm/yy",
-            "isValidEntry": true,
-            "isActualBill": false
-          },
-          {
-            "units": 123,
-            "rate": 123,
-            "entryDate": "dd/mm/yy",
-            "paidDate": "dd/mm/yy",
-            "isValidEntry": true,
-            "isActualBill": true
-          }
-        ],
-        "billData": {
-          "unitsConsumed": 23,
-          "meterReading": 423,
-          "billGeneratedDate": "dd/mm/yy",
-          "dueDate": "dd/mm/yy",
-          "billAmount": 123,
-          "paymentDate": "dd/mm/yy",
-          "isValidEntry": true
+  "services": [
+    {
+      "nickname": "",
+      "serviceNo": 23423,
+      "entryDate": "dd/mm/yy",
+      "currencyCode": "₹",
+      "units": 23,
+      "rate": 2342,
+      "pastUpdates": [
+        {
+          "units": 23,
+          "rate": 423,
+          "entryDate": "dd/mm/yy",
+          "isValidEntry": true,
+          "isActualBill": false
+        },
+        {
+          "units": 123,
+          "rate": 123,
+          "entryDate": "dd/mm/yy",
+          "paidDate": "dd/mm/yy",
+          "isValidEntry": true,
+          "isActualBill": true
         }
+      ],
+      "billData": {
+        "unitsConsumed": 23,
+        "meterReading": 423,
+        "billGeneratedDate": "dd/mm/yy",
+        "dueDate": "dd/mm/yy",
+        "billAmount": 123,
+        "paymentDate": "dd/mm/yy",
+        "isValidEntry": true
       }
-    ],
-    "suggestions": {}
+    }
+  ],
+  "suggestions": {}
 }

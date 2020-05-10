@@ -1,0 +1,12 @@
+// common elements spec
+body {
+    font-family: $Helvetica-font;
+    font-size: $font-size-m;
+    margin: 0px;
+    background-color: $body-bgcolor;
+}
+
+// modifiers spec
+.button--disabled {
+    cursor: default;
+}
