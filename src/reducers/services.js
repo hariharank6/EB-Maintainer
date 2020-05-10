@@ -1,7 +1,7 @@
 const calculateRate = () => {
     return calculatedRate;
 }
-export default (state, action) => {
+export default (state=[], action) => {
     switch(action.type) {
         case "ADD_UNIT" :
             if(state && action.data && action.data.serviceNo && action.data.units && action.data.updatedDate) {
@@ -13,7 +13,7 @@ export default (state, action) => {
                             units: service.units,
                             rate: service.rate,
                             updatedDate: service.updatedDate,
-                            isValidEntry: (service.rate < calculatedRate ? true : false)
+                            isValidEntry: (service.units < action.data.units ? true : false)
                         }
 
                         service.units = action.data.units
@@ -40,7 +40,7 @@ export default (state, action) => {
                                 units: clonedState[stateIteration].units,
                                 rate: clonedState[stateIteration].rate,
                                 updatedDate: clonedState[stateIteration].updatedDate,
-                                isValidEntry: (clonedState[stateIteration].rate < calculatedRate ? true : false)
+                                isValidEntry: (clonedState[stateIteration].units < action.data.services[actionIteration].units ? true : false)
                             }
     
                             clonedState[stateIteration].units = action.data.units

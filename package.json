@@ -4,7 +4,6 @@
   "description": "",
   "main": "webpack.config.js",
   "scripts": {
-    "serve": "live-server public/",
     "build": "webpack",
     "start": "webpack-dev-server"
   },
