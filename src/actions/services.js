@@ -1,9 +1,9 @@
-export const addUnit = ({serviceNo = undefined, units = undefined, updatedDate = ""} = {}) => ({
+export const addUnit = ({serviceNo = undefined, units = undefined, entryDate = ""} = {}) => ({
     type: "ADD_UNIT",
     data: {
         serviceNo,
         units,
-        updatedDate
+        entryDate
     }
 })
 

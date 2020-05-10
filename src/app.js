@@ -8,6 +8,11 @@ import AppRouter from './routes/AppRouter'
 
 const reduxStore = configureStore()
 
+reduxStore.subscribe(() => {
+    let storeData = reduxStore.getState()
+    console.log(storeData)
+})
+
 const providerWrapper = () => (
     <Provider store={reduxStore}>
         <AppRouter></AppRouter>

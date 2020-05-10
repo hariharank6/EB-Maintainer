@@ -21,7 +21,7 @@ const calculateRate = ({units}, {meterReading}) => {
 export default (state=[], action) => {
     switch(action.type) {
         case "ADD_UNIT" :
-            if(state && action.data && action.data.serviceNo && action.data.units && action.data.updatedDate) {
+            if(state && action.data && action.data.serviceNo && action.data.units && action.data.entryDate) {
                 return state.map((service) => {
                     if(service.serviceNo == action.data.serviceNo) {                        
                         const calculatedRate = calculateRate(action, state.billData)
@@ -29,12 +29,12 @@ export default (state=[], action) => {
                         const pastUpdateData = {
                             units: service.units,
                             rate: service.rate,
-                            updatedDate: service.updatedDate,
+                            entryDate: service.entryDate,
                             isValidEntry: (service.units < action.data.units ? true : false)
                         }
 
                         service.units = action.data.units
-                        service.updatedDate = action.data.updatedDate
+                        service.entryDate = action.data.entryDate
                         service.pastUpdates = [...service.pastUpdates, pastUpdateData]
                     }
                     return service
@@ -56,12 +56,12 @@ export default (state=[], action) => {
                             const pastUpdateData = {
                                 units: clonedState[stateIteration].units,
                                 rate: clonedState[stateIteration].rate,
-                                updatedDate: clonedState[stateIteration].updatedDate,
+                                entryDate: clonedState[stateIteration].entryDate,
                                 isValidEntry: (clonedState[stateIteration].units < action.data.services[actionIteration].units ? true : false)
                             }
     
                             clonedState[stateIteration].units = action.data.units
-                            clonedState[stateIteration].updatedDate = action.data.updatedDate
+                            clonedState[stateIteration].entryDate = action.data.entryDate
                             clonedState[stateIteration].pastUpdates = [...clonedState[stateIteration].pastUpdates, pastUpdateData]
                             updatedServicesCount++
                             break
