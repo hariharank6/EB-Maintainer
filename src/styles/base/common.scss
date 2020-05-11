@@ -1,4 +1,8 @@
 // common elements spec
+* {
+    box-sizing: border-box;
+}
+
 body {
     font-family: $Helvetica-font;
     font-size: $font-size-m;

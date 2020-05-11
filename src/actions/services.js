@@ -1,4 +1,4 @@
-export const addService = ({
+const addService = ({
     serviceNo = undefined,
     nickname = "",
     entryDate = undefined,
@@ -23,7 +23,7 @@ export const addService = ({
     }
 })
 
-export const addUnit = ({serviceNo = undefined, units = undefined, entryDate = ""} = {}) => ({
+const addUnit = ({serviceNo = undefined, units = undefined, entryDate = ""} = {}) => ({
     type: "ADD_UNIT",
     data: {
         serviceNo,
@@ -32,9 +32,11 @@ export const addUnit = ({serviceNo = undefined, units = undefined, entryDate = "
     }
 })
 
-export const addAllUnits = ({services = []} = {}) => ({
+const addAllUnits = ({services = []} = {}) => ({
     type: "ADD_ALL_UNITS",
     data: {
         services
     }
 })
+
+export {addService, addUnit, addAllUnits}

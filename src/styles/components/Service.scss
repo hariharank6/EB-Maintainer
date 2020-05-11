@@ -1,0 +1,52 @@
+.service {
+    margin: 25px 10px;
+}
+
+.service__titlebar {
+    background-color: $service-title-bgcolor;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+
+    .service__title {
+        margin-left: 10px;
+    }
+    
+    button.service__add-button {
+        margin-right: 10px;
+    }
+}
+
+.service__unbilled-container,
+.service__bill-container {
+    margin: 20px 10px;
+}
+
+.service__unbilled-title,
+.service__bill-title {
+    font-size: $font-service-subtitle-size;
+    background-color: $service-subtitle-bgcolor;
+}
+.service__unbilled-content,
+.service__bill-content {
+    padding-top: 10px;
+    background-color: #dcdce0;
+    display: flex;
+    flex-direction: column;
+}
+
+.service__unbilled-container,
+.service__bill-container {
+    display: none;
+}
+
+.service--expanded {
+    .service__unbilled-container,
+    .service__bill-container {
+        display: block;
+    }
+
+    .service__title-rate {
+        display: none;
+    }
+}

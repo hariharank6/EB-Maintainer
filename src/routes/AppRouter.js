@@ -15,7 +15,7 @@ export default () => (
             <Switch>
                 <Route path="/" component={HomePage} exact={true}></Route>
                 <Route path="/addall" component={AddAllPage} exact={true}></Route>
-                <Route path="/add" component={AddPage} exact={true}></Route>
+                <Route path="/add/:serviceNo" component={AddPage} exact={true}></Route>
                 <Route path="/suggestions" component={SuggestionPage} exact={true}></Route>
                 <Route component={PageNotFound}></Route>
             </Switch>
