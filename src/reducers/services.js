@@ -78,7 +78,7 @@ export default (state=[], action) => {
                 for(let stateIteration = 0; stateIteration < clonedState.length; stateIteration++) {
                     for(let actionIteration = 0; actionIteration < action.data.services.length; actionIteration++) {
                         if(clonedState[stateIteration].serviceNo == action.data.services[actionIteration].serviceNo) {
-                            const calculatedRate = calculateRate(action, clonedState[stateIteration].billData)
+                            const calculatedRate = calculateRate(action.data.services[actionIteration], clonedState[stateIteration].billData)
 
                             const pastUpdateData = {
                                 units: clonedState[stateIteration].units,
