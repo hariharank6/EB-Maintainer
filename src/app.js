@@ -25,36 +25,44 @@ const providerWrapper = () => (
     </Provider>
 )
 
-// reduxStore.dispatch(addService({
-//     serviceNo:123,
-//     units: 560,
-//     nickname: "test123",
-//     billData: {
-//         meterReading: 10,
-//         billGeneratedDate: "dd/mm/yy"
-//     }
-// }))
+reduxStore.dispatch(addService({
+    serviceNo:123,
+    units: 560,
+    nickname: "test123",
+    currencyCode: "₹",
+    billData: {
+        meterReading: 10,
+        billGeneratedDate: "dd/mm/yy",
+        dueDate: "dd/mm/yy",
+        paymentDate: "dd/mm/yy",
+        billAmount: 2342
+    }
+}))
 
-// reduxStore.dispatch(addService({
-//     serviceNo:1234,
-//     units: 234,
-//     nickname: "test1234",
-//     billData: {
-//         meterReading: 150,
-//         billGeneratedDate: "dd/mm/yy"
-//     }
-// }))
+reduxStore.dispatch(addService({
+    serviceNo:1234,
+    units: 234,
+    nickname: "test1234",
+    currencyCode: "₹",
+    billData: {
+        meterReading: 150,
+        billGeneratedDate: "dd/mm/yy",
+        dueDate: "dd/mm/yy",
+        paymentDate: "dd/mm/yy",
+        billAmount: 234
+    }
+}))
 
-// reduxStore.dispatch(addUnit({
-//     "serviceNo": 123,
-//     "units": 769,
-//     "entryDate": "dd/mm/yy"
-// }))
+reduxStore.dispatch(addUnit({
+    "serviceNo": 123,
+    "units": 769,
+    "entryDate": "dd/mm/yy"
+}))
 
-// reduxStore.dispatch(addUnit({
-//     "serviceNo": 1234,
-//     "units": 190,
-//     "entryDate": "dd/mm/yy"
-// }))
+reduxStore.dispatch(addUnit({
+    "serviceNo": 1234,
+    "units": 190,
+    "entryDate": "dd/mm/yy"
+}))
 
 ReactDOM.render(providerWrapper(), document.getElementById('EBContainer'))

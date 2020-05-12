@@ -8,7 +8,7 @@ class AddService extends React.Component {
         super(props)
         this.state = {
             units : undefined,
-            serviceNo : props.service.serviceNo
+            serviceNo : props.service && props.service.serviceNo ? props.service.serviceNo : undefined
         }
         this.handleInput = this.handleInput.bind(this)
         this.addUnit = this.addUnit.bind(this)

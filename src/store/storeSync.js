@@ -3,15 +3,40 @@ import {connect} from "react-redux"
 
 import { addService } from "../actions/services.js"
 
-export const storeToStorage = (data) => {
-    const json = JSON.stringify(data)
-    localStorage.setItem("data", json)
+export const storeToStorage = (updatedStoreData) => {
+    localStorage.setItem("storeData", JSON.stringify(updatedStoreData))
 }
 
 export const storageToStore = (store) => {
-    const storeStringData = localStorage.getItem("data")
-    const storeData = JSON.parse(storeStringData)
-    for (const service of storeData.services){
+    let storeData = {"services":[],suggestions:{}}
+    try {
+        const storageStoreData = localStorage.getItem("storeData")
+        if(storageStoreData != null) {
+            const storeData = JSON.parse(storageStoreData)
+            localStorage.setItem("storeDataBackup", JSON.stringify(storeData))
+        }
+        else {
+            throw new Error()
+        }
+    }
+    catch {
+        const storageStoreBackupData = localStorage.getItem("storeDataBackup")
+        if(storageStoreBackupData != null){
+            try {
+                const storeData = JSON.parse(storageStoreBackupData)
+                localStorage.setItem("storeData", JSON.stringify(storeData))
+            }
+            catch {
+                localStorage.setItem("storeData", JSON.stringify(storeData))
+                localStorage.setItem("storeDataBackup", JSON.stringify(storeData))
+            }
+        }
+        else {
+            localStorage.setItem("storeData", JSON.stringify(storeData))
+            localStorage.setItem("storeDataBackup", JSON.stringify(storeData))
+        }
+    }
+    for (const service of storeData.services) {
         store.dispatch(addService(service))
     }
 }
