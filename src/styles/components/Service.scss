@@ -20,6 +20,7 @@
 .service__unbilled-container,
 .service__bill-container {
     margin: 20px 10px;
+    display: none;
 }
 
 .service__unbilled-title,
@@ -33,11 +34,6 @@
     background-color: #dcdce0;
     display: flex;
     flex-direction: column;
-}
-
-.service__unbilled-container,
-.service__bill-container {
-    display: none;
 }
 
 .service--expanded {
