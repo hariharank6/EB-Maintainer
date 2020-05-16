@@ -1,5 +1,6 @@
 import React from 'react'
 import {connect} from 'react-redux'
+import { Link } from "react-router-dom"
 
 import AddService from './AddService'
 import {addAllUnits} from "../actions/services"
@@ -55,7 +56,7 @@ class AddAllPage extends React.Component {
                 }
                 <div className="add-all__buttonsHolder">
                     <button className="add-all__add-button" onClick={this.handleAddAll}>Add all</button>
-                    <button className="add-all__cancel-button">Cancel</button>
+                    <Link to="/"><button className="add-all__cancel-button">Cancel</button></Link>
                 </div>
             </div>
         )

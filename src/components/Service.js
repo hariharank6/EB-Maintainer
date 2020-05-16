@@ -1,5 +1,5 @@
 import React from 'react'
-import { Redirect, Switch } from "react-router-dom"
+import { Redirect, Switch,Link } from "react-router-dom"
 
 export default class Service extends React.Component {
     constructor(props) {
@@ -31,7 +31,7 @@ export default class Service extends React.Component {
                         <div className="service__titlebar" onClick={this.toggleMoreInfo}>
                             <div className="service__title">{this.props.service.nickname}</div>
                             <div className="service__title-rate">{this.props.service.currencyCode + this.props.service.rate}</div>
-                            <button className="service__add-button" onClick={() => this.setRedirect(this.props.service.serviceNo)} >Add</button>
+                            <Link to={"/add/" + this.props.service.serviceNo}><button className="service__add-button" onClick={() => this.setRedirect(this.props.service.serviceNo)} >Add</button></Link>
                         </div>
                         {this.props.service.entryDate && typeof this.props.service.units != "undefined" && typeof this.props.service.rate != "undefined" && this.props.service.billData && typeof this.props.service.billData.meterReading != "undefined" && 
                             <div className="service__unbilled-container">

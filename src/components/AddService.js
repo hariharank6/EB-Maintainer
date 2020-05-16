@@ -1,5 +1,6 @@
 import React from 'react'
 import { connect } from 'react-redux'
+import { Link } from "react-router-dom"
 
 import {addUnit} from '../actions/services'
 
@@ -30,13 +31,14 @@ class AddService extends React.Component {
     render() {
         return (
             <div className="addservice">
-                {this.props.isAddAllEmbed || (this.props.service && this.props.service.serviceNo) ?
+                {this.props.isAddAllEmbed || (this.props.service && this.props.service.serviceNo && this.props.service.nickname) ?
                     <div className="addservice__content">
+                        <div className = 'addservice__title'>{this.props.service.nickname}</div>
                         <input type="number" value={this.state.units} onChange={this.handleInput} className="addservice__add-unit" placeholder="Enter the current Unit:"></input>
                         {!this.props.isAddAllEmbed &&
                             <div className="addservice__buttons-container">
                                 <button className="addservice__add-button" onClick={this.addUnit}>ADD</button>
-                                <button className="addservice__cancel-button">CANCEL</button>
+                                <Link to="/"><button className="addservice__cancel-button">CANCEL</button></Link>
                             </div>
                         }
                     </div>
@@ -44,7 +46,7 @@ class AddService extends React.Component {
                     <div className="addservice__content--error">
                         <div className="addservice__error-text">This is an error entry!</div>
                         <div className="addservice__error-subtext">
-                            <button>Go Home</button>
+                        <Link to="/"><button>Go Home</button></Link>
                         </div>
                     </div>
                 }
