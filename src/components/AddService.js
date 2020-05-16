@@ -13,11 +13,14 @@ class AddService extends React.Component {
         this.handleInput = this.handleInput.bind(this)
         this.addUnit = this.addUnit.bind(this)
     }
+    componentDidUpdate() {
+        this.props.syncServiceData && this.props.syncServiceData({serviceNo: this.state.serviceNo, units: this.state.units, entryDate: '15/05/20'})
+    }
     handleInput(event) {
         const units = event.target.value
-        this.setState(() => ({
-            units
-        }))
+        if(units) {
+            this.setState({units})
+        }
     }
     addUnit(event) {
         const units = this.state.units
@@ -29,7 +32,7 @@ class AddService extends React.Component {
             <div className="addservice">
                 {this.props.isAddAllEmbed || (this.props.service && this.props.service.serviceNo) ?
                     <div className="addservice__content">
-                        <input type="number" onChange={this.handleInput} className="addservice__add-unit" placeholder="Enter the current Unit:"></input>
+                        <input type="number" value={this.state.units} onChange={this.handleInput} className="addservice__add-unit" placeholder="Enter the current Unit:"></input>
                         {!this.props.isAddAllEmbed &&
                             <div className="addservice__buttons-container">
                                 <button className="addservice__add-button" onClick={this.addUnit}>ADD</button>
@@ -52,7 +55,7 @@ class AddService extends React.Component {
 
 const mapStoreToProps = (state, props) => {
     if(props.isAddAllEmbed) {
-        return {services: state.services}
+        return {service: props.service}
     }
     else {
         return {service: state.services.find((service) => ((service.serviceNo && props.match && props.match.params && props.match.params.serviceNo) && service.serviceNo == props.match.params.serviceNo))}

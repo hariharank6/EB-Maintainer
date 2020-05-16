@@ -48,7 +48,7 @@ export default (state=[], action) => {
                 return state.map((service) => {
                     if(service.serviceNo == action.data.serviceNo) {
                         let clonedService = Object.assign({}, service)
-                        const calculatedPrice = calculateRate(action.data, clonedService.billData)
+                        const calculatedRate = calculateRate(action.data, clonedService.billData)
                         
                         const pastUpdateData = {
                             units: clonedService.units,
@@ -59,7 +59,7 @@ export default (state=[], action) => {
 
                         clonedService.units = action.data.units
                         clonedService.entryDate = action.data.entryDate 
-                        clonedService.rate = calculatedPrice
+                        clonedService.rate = calculatedRate
                         clonedService.pastUpdates = [...clonedService.pastUpdates, pastUpdateData]
                         return clonedService
                     }
@@ -81,9 +81,9 @@ export default (state=[], action) => {
                             const calculatedRate = calculateRate(action.data.services[actionIteration], clonedState[stateIteration].billData)
 
                             const pastUpdateData = {
-                                units: clonedState[stateIteration].units,
-                                rate: clonedState[stateIteration].rate,
-                                entryDate: clonedState[stateIteration].entryDate,
+                                units: action.data.services[actionIteration].units,
+                                rate: calculatedRate,
+                                entryDate: action.data.services[actionIteration].entryDate,
                                 isValidEntry: (clonedState[stateIteration].units < action.data.services[actionIteration].units ? true : false)
                             }
     
