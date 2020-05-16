@@ -87,8 +87,8 @@ export default (state=[], action) => {
                                 isValidEntry: (clonedState[stateIteration].units < action.data.services[actionIteration].units ? true : false)
                             }
     
-                            clonedState[stateIteration].units = action.data.units
-                            clonedState[stateIteration].entryDate = action.data.entryDate
+                            clonedState[stateIteration].units = action.data.services[actionIteration].units
+                            clonedState[stateIteration].entryDate = action.data.services[actionIteration].entryDate
                             clonedState[stateIteration].pastUpdates = [...clonedState[stateIteration].pastUpdates, pastUpdateData]
                             updatedServicesCount++
                             break

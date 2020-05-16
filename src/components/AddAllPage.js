@@ -1,7 +1,8 @@
 import React from 'react'
 import {connect} from 'react-redux'
-import AddService from './AddService'
 
+import AddService from './AddService'
+import {addAllUnits} from "../actions/services"
 class AddAllPage extends React.Component {
     constructor(props) {
         super(props)
@@ -35,7 +36,7 @@ class AddAllPage extends React.Component {
     }
     handleAddAll() {
         if(this.state.services && this.props.services && this.state.services.length == this.props.services.length) {
-            this.props.dispatch("ADD_ALL_UNITS", this.state.services)
+            this.props.dispatch(addAllUnits({services: this.state.services}))
         }
         else {
             this.setState({error:"Fill the units for all services"})
