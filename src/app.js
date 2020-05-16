@@ -5,8 +5,11 @@ import './styles/styles.scss'
 
 import configureStore from './store/configureStore'
 import AppRouter from './routes/AppRouter'
-import { addUnit, addService } from "./actions/services.js"
-import { storeToStorage, storageToStore } from "./store/storeSync.js"
+import { addUnit, addService } from "./actions/services"
+import { storeToStorage, storageToStore } from "./store/storeSync"
+import {initializeWorkers} from './workers/serviceWorkerInit'
+
+initializeWorkers()
 
 const reduxStore = configureStore()
 
