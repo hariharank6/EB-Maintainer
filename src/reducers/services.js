@@ -88,6 +88,7 @@ export default (state=[], action) => {
                             }
     
                             clonedState[stateIteration].units = action.data.services[actionIteration].units
+                            clonedState[stateIteration].rate = calculatedRate
                             clonedState[stateIteration].entryDate = action.data.services[actionIteration].entryDate
                             clonedState[stateIteration].pastUpdates = [...clonedState[stateIteration].pastUpdates, pastUpdateData]
                             updatedServicesCount++

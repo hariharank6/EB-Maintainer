@@ -27,6 +27,7 @@ class AddService extends React.Component {
         const units = this.state.units
         const entryDate = "dd/mm/yy"
         this.props.dispatch(addUnit({serviceNo: this.state.serviceNo, units, entryDate}))
+        this.props.history.push("/")
     }
     render() {
         return (

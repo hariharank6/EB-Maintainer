@@ -7,13 +7,13 @@ import storeDataConfig from '../store/storeDataInitConfig'
 export const storeToStorage = (updatedStoreData) => {
   localStorage.setItem("storeData", JSON.stringify(updatedStoreData))
 }
-
+console.log(34)
 export const storageToStore = (store) => {
   let storeData = storeDataConfig
   try {
     const storageStoreData = localStorage.getItem("storeData")
     if (storageStoreData != null) {
-      const storeData = JSON.parse(storageStoreData)
+      storeData = JSON.parse(storageStoreData)
       localStorage.setItem("storeDataBackup", JSON.stringify(storeData))
     }
     else {
@@ -24,7 +24,7 @@ export const storageToStore = (store) => {
     const storageStoreBackupData = localStorage.getItem("storeDataBackup")
     if (storageStoreBackupData != null) {
       try {
-        const storeData = JSON.parse(storageStoreBackupData)
+        storeData = JSON.parse(storageStoreBackupData)
         localStorage.setItem("storeData", JSON.stringify(storeData))
       }
       catch {

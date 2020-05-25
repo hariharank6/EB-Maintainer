@@ -7,9 +7,8 @@ export default class Service extends React.Component {
         this.state = {
             isOpened: false
         }
-        console.log(this.state)
+        // console.log(this.state)
         this.toggleMoreInfo = this.toggleMoreInfo.bind(this)
-        this.setRedirect = this.setRedirect.bind(this)
     }
     toggleMoreInfo() {
         this.setState((prevState) => {
@@ -17,11 +16,6 @@ export default class Service extends React.Component {
             return {isOpened : !prevState.isOpened}
         })
         // console.log(this.state)
-    }
-    setRedirect(serviceNo) {
-        event.preventDefault()
-        console.log("Button clicked")
-        return (<Switch> <Redirect to='/addall' /> </Switch>)
     }
     render() {
         return (
@@ -31,7 +25,11 @@ export default class Service extends React.Component {
                         <div className="service__titlebar" onClick={this.toggleMoreInfo}>
                             <div className="service__title">{this.props.service.nickname}</div>
                             <div className="service__title-rate">{this.props.service.currencyCode + this.props.service.rate}</div>
-                            <Link to={"/add/" + this.props.service.serviceNo}><button className="service__add-button" onClick={() => this.setRedirect(this.props.service.serviceNo)} >Add</button></Link>
+                            <Link to={"/add/" + this.props.service.serviceNo}>
+                                <button className="service__add-button">
+                                    <svg version="1.1" xmlns="http://www.w3.org/2000/svg" width="15px" height="15px" viewBox="0 0 512 512"><title></title><g id="icomoon-ignore"></g><path d="M496 192h-176v-176c0-8.836-7.164-16-16-16h-96c-8.836 0-16 7.164-16 16v176h-176c-8.836 0-16 7.164-16 16v96c0 8.836 7.164 16 16 16h176v176c0 8.836 7.164 16 16 16h96c8.836 0 16-7.164 16-16v-176h176c8.836 0 16-7.164 16-16v-96c0-8.836-7.164-16-16-16z"></path></svg>
+                                </button>
+                            </Link>
                         </div>
                         {this.props.service.entryDate && typeof this.props.service.units != "undefined" && typeof this.props.service.rate != "undefined" && this.props.service.billData && typeof this.props.service.billData.meterReading != "undefined" && 
                             <div className="service__unbilled-container">

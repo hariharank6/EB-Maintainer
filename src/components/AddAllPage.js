@@ -38,6 +38,7 @@ class AddAllPage extends React.Component {
     handleAddAll() {
         if(this.state.services && this.props.services && this.state.services.length == this.props.services.length) {
             this.props.dispatch(addAllUnits({services: this.state.services}))
+            this.props.history.push("/")
         }
         else {
             this.setState({error:"Fill the units for all services"})

@@ -14,11 +14,11 @@ initializeWorkers()
 const reduxStore = configureStore()
 
 storageToStore(reduxStore)
-console.log(reduxStore.getState())
+// console.log(reduxStore.getState())
 
 reduxStore.subscribe(() => {
     let storeData = reduxStore.getState()
-    console.log(storeData)
+    // console.log(storeData)
     storeToStorage(storeData)
 })
 
