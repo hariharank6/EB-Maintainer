@@ -57,7 +57,7 @@ class AddAllPage extends React.Component {
                 }
                 <div className="add-all__buttonsHolder">
                     <button className="add-all__add-button" onClick={this.handleAddAll}>Add all</button>
-                    <Link to="/"><button className="add-all__cancel-button">Cancel</button></Link>
+                    <Link to="/" className="add-all__cancel"><button className="add-all__cancel-button">Cancel</button></Link>
                 </div>
             </div>
         )

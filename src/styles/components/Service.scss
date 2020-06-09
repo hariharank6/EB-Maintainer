@@ -1,23 +1,37 @@
 .service {
     margin: 25px 10px;
+    background-color: $service-title-bgcolor;
+    border-radius: 10px;
+    overflow: auto;
+    box-shadow: 2px 2px 11px 2px #8e83d0;
 }
 
 .service__titlebar {
-    background-color: $service-title-bgcolor;
     display: flex;
     align-items: center;
     justify-content: space-between;
     padding: 20px;
 
+    .service__title, .service__title-rate {
+        color: #fff;
+        font-size: 15px;
+    }
+
     .service__title {
         margin-left: 10px;
+        font-weight: bold;
     }
     
     button.service__add-button {
-        width: 25px;
-        height: 25px;
+        width: 35px;
+        height: 35px;
         padding: 0px;
-
+        border-radius: 18px;
+        font-size: 25px;
+        background-color: #f3f3f5;
+        color: #95979e;
+        border: none;
+        
         svg {
             padding: 2px;
         }
@@ -26,27 +40,51 @@
 
 .service__unbilled-container,
 .service__bill-container {
+    margin: 0px 10px;
+    border-radius: 12px;
+    opacity: 0;
+    height: 0;
+    overflow: hidden;
+    transition: all 0.5s ease-in-out;
+}
+
+.service.service--expanded .service__bill-container {
     margin: 20px 10px;
-    display: none;
 }
 
 .service__unbilled-title,
 .service__bill-title {
     font-size: $font-service-subtitle-size;
     background-color: $service-subtitle-bgcolor;
+    height: 40px;
+    line-height: 40px;
+    padding: 0px 15px;
 }
+
 .service__unbilled-content,
 .service__bill-content {
-    padding-top: 10px;
-    background-color: #dcdce0;
+    padding: 10px 20px;
+    background-color: #f0ebfd;
     display: flex;
     flex-direction: column;
+}
+
+.service__unbilled-entry-date,
+.service__unbilled-units,
+.service__unbilled-amount,
+.service__due-date,
+.service__bill-amount,
+.service__payment-status {
+    font-size: 15px;
+    padding: 10px 0px;
 }
 
 .service--expanded {
     .service__unbilled-container,
     .service__bill-container {
-        display: block;
+        opacity: 1;
+        height: auto;
+        transition: all 0.5s ease-in-out;
     }
 
     .service__title-rate {

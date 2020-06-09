@@ -1,11 +1,66 @@
-.add-all{
-    padding: 50px;
+.add-all {
+    width: 85%;
+    border-radius: 12px;
+    background-color: #f3f4f6;
+    margin: 30px auto;
+    overflow: auto;
+    box-shadow: 2px 2px 11px 2px #8e83d0;
 }
 
-.add-all__add-button{
-
+.addservice.add-all-embed .addservice__title {
+    padding: 2vh 0;
+    margin: 0;
 }
 
-.add-all__cancel-button{
+.addservice.add-all-embed .addservice__content,
+.add-all__buttonsHolder {
+    margin-bottom: 4vh !important;
+}
 
+em.add-all__error-message {
+    font-size: 20px;
+    text-align: center;
+    margin-top: 10px;
+    display: block;
+    color: red;
+}
+
+.addservice__content,
+.add-all__buttonsHolder {
+    width: 90%;
+    height: 80%;
+    margin: auto;
+}
+
+.add-all__buttonsHolder {
+    margin-top: 40px;
+    display: flex;
+    justify-content: space-evenly;
+}
+
+button.add-all__add-button,
+.add-all__cancel {
+    width: 46%;
+    height: 45px;
+    border-radius: 10px;
+}
+
+button.add-all__add-button {
+    background-color: #60b246;
+    border: none;
+    color: #f8f8f8;
+    font-size: 15px;
+    font-weight: bold;
+}
+
+button.add-all__cancel-button {
+    width: 100%;
+    height: 45px;
+    color: #f8f8f8;
+    font-size: 15px;
+    font-weight: bold;
+    border-radius: 10px;
+    border: none;
+    position: relative;
+    background-color: #f95c6b;
 }

@@ -6,8 +6,16 @@
 body {
     font-family: $Helvetica-font;
     font-size: $font-size-m;
-    margin: 0px;
     background-color: $body-bgcolor;
+    margin: 10px;
+}
+
+div#EBContainer {
+    background-color: #d1cde7;
+    border-radius: 10px;
+    min-height: 100vh;
+    min-height: calc(100vh - 20px);
+    overflow: auto;
 }
 
 // modifiers spec

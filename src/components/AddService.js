@@ -8,7 +8,7 @@ class AddService extends React.Component {
     constructor(props) {
         super(props)
         this.state = {
-            units : undefined,
+            units : 0,
             serviceNo : props.service && props.service.serviceNo ? props.service.serviceNo : undefined
         }
         this.handleInput = this.handleInput.bind(this)
@@ -20,7 +20,7 @@ class AddService extends React.Component {
     handleInput(event) {
         const units = event.target.value
         if(units) {
-            this.setState({units})
+            this.setState(() => ({units}))
         }
     }
     addUnit(event) {
@@ -31,7 +31,7 @@ class AddService extends React.Component {
     }
     render() {
         return (
-            <div className="addservice">
+            <div className={this.props.isAddAllEmbed ? "addservice add-all-embed" : "addservice standalone"}>
                 {this.props.isAddAllEmbed || (this.props.service && this.props.service.serviceNo && this.props.service.nickname) ?
                     <div className="addservice__content">
                         <div className = 'addservice__title'>{this.props.service.nickname}</div>
@@ -39,7 +39,7 @@ class AddService extends React.Component {
                         {!this.props.isAddAllEmbed &&
                             <div className="addservice__buttons-container">
                                 <button className="addservice__add-button" onClick={this.addUnit}>ADD</button>
-                                <Link to="/"><button className="addservice__cancel-button">CANCEL</button></Link>
+                                <Link to="/" className="addservice__cancel"><button className="addservice__cancel-button">CANCEL</button></Link>
                             </div>
                         }
                     </div>
