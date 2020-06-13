@@ -7,7 +7,7 @@ import storeDataConfig from '../store/storeDataInitConfig'
 export const storeToStorage = (updatedStoreData) => {
   localStorage.setItem("storeData", JSON.stringify(updatedStoreData))
 }
-console.log(34)
+// console.log(34)
 export const storageToStore = (store) => {
   let storeData = storeDataConfig
   try {
