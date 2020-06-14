@@ -145,7 +145,8 @@ const storeData = {
       }
     }
   ],
-  "suggestions": {}
+  "suggestions": {},
+  "config": {"dateFormat": "dd/mm/yyyy"}
 }
 
 export default storeData
