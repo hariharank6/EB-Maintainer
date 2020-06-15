@@ -1,0 +1,24 @@
+.signin {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: rgba(0, 0, 0, 0.63);
+    z-index: 2;
+}
+
+.signin__content {
+    top: 35%;
+    position: absolute;
+    width: 80%;
+    left: 10%;
+    background: #f0ebfd;
+    padding: 20px;
+}
+
+.signin__buttonsHolder {
+    margin: 40px 0px 0px;
+    display: flex;
+    justify-content: space-evenly;
+}

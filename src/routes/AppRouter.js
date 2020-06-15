@@ -2,6 +2,7 @@ import React from 'react'
 import {Route, Switch, BrowserRouter} from 'react-router-dom'
 
 import Header from '../components/Header'
+import Signin from '../components/Signin'
 import HomePage from '../components/HomePage'
 import AddAllPage from '../components/AddAllPage'
 import AddService from '../components/AddService'
@@ -12,6 +13,7 @@ export default () => (
     <BrowserRouter>
         <div>
             <Header></Header>
+            <Signin></Signin>
             <Switch>
                 <Route path="/" component={HomePage} exact={true}></Route>
                 <Route path="/addall" component={AddAllPage} exact={true}></Route>

@@ -146,7 +146,19 @@ const storeData = {
     }
   ],
   "suggestions": {},
-  "config": {"dateFormat": "dd/mm/yyyy"}
+  "config": {
+    "dateFormat": "dd/mm/yyyy",
+    "firebase": {
+      apiKey: "AIzaSyAaarrq5v54_ux71LtMyu0UQ86pjQZZheY",
+      authDomain: "eb-maintainer.firebaseapp.com",
+      databaseURL: "https://eb-maintainer.firebaseio.com",
+      projectId: "eb-maintainer",
+      storageBucket: "eb-maintainer.appspot.com",
+      messagingSenderId: "78882283244",
+      appId: "1:78882283244:web:32b4c867f51d073b628fc9",
+      measurementId: "G-05F4E66EQ1"
+    }
+  }
 }
 
 export default storeData

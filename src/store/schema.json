@@ -19,7 +19,7 @@
           "units": 123,
           "rate": 123,
           "entryDate": "dd/mm/yy",
-          "paidDate": "dd/mm/yy",
+          // "paidDate": "dd/mm/yy",
           "isValidEntry": true,
           "isActualBill": true
         }
