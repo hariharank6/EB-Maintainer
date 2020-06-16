@@ -30,8 +30,8 @@
         "billGeneratedDate": "dd/mm/yy",
         "dueDate": "dd/mm/yy",
         "billAmount": 123,
-        "paymentDate": "dd/mm/yy",
-        "isValidEntry": true
+        "isValidEntry": true,
+        "warning": ""
       }
     }
   ],

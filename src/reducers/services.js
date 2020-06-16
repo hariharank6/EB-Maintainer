@@ -19,6 +19,26 @@ const calculateRate = ({units}, {meterReading}) => {
     return finalPrice
 }
 
+const calculateUnits = ({billAmount}) => {
+    const subsidy = 150
+    let units = 0
+    const fixedPrice = [0, 20, 30, 50]
+    billAmount += subsidy
+    if (billAmount <= 0){
+        units = 50
+    }
+    else if(billAmount <= 320){
+        units = (billAmount - fixedPrice[1]) / 1.5
+    }
+    else if(billAmount <= 1280){
+        units = ((billAmount - fixedPrice[2] - 350) / 3) + 200
+    }
+    else{
+        units = ((billAmount - fixedPrice[3] - 1880) / 6.6) + 500
+    }
+    return units
+}
+
 export default (state=[], action) => {
     switch(action.type) {
         case "ADD_SERVICE":

@@ -23,7 +23,10 @@ const addService = ({
     }
 })
 
-const addUnit = ({serviceNo = undefined, units = undefined, entryDate = ""} = {}) => ({
+const addUnit = ({serviceNo = undefined, 
+    units = undefined, 
+    entryDate = "" 
+    } = {}) => ({
     type: "ADD_UNIT",
     data: {
         serviceNo,
@@ -39,4 +42,10 @@ const addAllUnits = ({services = []} = {}) => ({
     }
 })
 
+const addBillData = ({billAmount = undefined, 
+    dueDate = undefined, 
+    serviceN0 = undefined
+    }) => ({
+        type: "ADD_BILL_DATA"
+    })
 export {addService, addUnit, addAllUnits}

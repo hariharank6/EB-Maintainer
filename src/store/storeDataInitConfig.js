@@ -147,7 +147,7 @@ const storeData = {
   ],
   "suggestions": {},
   "config": {
-    "dateFormat": "dd/mm/yyyy",
+    "dateFormat": "DD/MM/YYYY",
     "firebase": {
       apiKey: "AIzaSyAaarrq5v54_ux71LtMyu0UQ86pjQZZheY",
       authDomain: "eb-maintainer.firebaseapp.com",

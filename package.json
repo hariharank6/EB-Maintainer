@@ -1,7 +1,7 @@
 {
   "name": "eb-maintainer",
   "version": "1.0.0",
-  "description": "",
+  "description": "An app using React/Node with PWA features for maintaining multiple electricity connections",
   "main": "webpack.config.js",
   "scripts": {
     "build": "webpack",
@@ -25,6 +25,7 @@
     "css-loader": "^3.5.3",
     "firebase": "^7.15.1",
     "firebase-tools": "^8.2.0",
+    "moment": "^2.26.0",
     "react": "^16.13.1",
     "react-dom": "^16.13.1",
     "react-redux": "^7.2.0",
