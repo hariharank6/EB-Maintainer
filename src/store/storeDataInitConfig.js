@@ -156,7 +156,13 @@ const storeData = {
       storageBucket: "eb-maintainer.appspot.com",
       messagingSenderId: "78882283244",
       appId: "1:78882283244:web:32b4c867f51d073b628fc9",
-      measurementId: "G-05F4E66EQ1"
+      measurementId: "G-05F4E66EQ1",
+      clientId: "78882283244-1i19eaguu2bc96ncc777lmq3d53bd39d.apps.googleusercontent.com",
+      scopes: "https://www.googleapis.com/auth/gmail.readonly"
+    },
+    "url": {
+      "getAccessToken": "https://www.googleapis.com/oauth2/v4/token",
+      'getEmailIds': "https://www.googleapis.com/gmail/v1/users/{{userId}}/messages?q=%22from%3Arpe-reminders%40amazon.com%22&access_token={{accessToken}}"
     }
   }
 }

@@ -1,4 +1,5 @@
 import * as firebase from 'firebase'
+import {initClient} from './email'
 import appConfig from '../store/storeDataInitConfig'
 
 firebase.initializeApp(appConfig.config.firebase)
@@ -12,7 +13,7 @@ const checkSignin = () => {
 
 const initGoogleSignin = () => {
     const provider = new firebase.auth.GoogleAuthProvider()
-    provider.addScope("https://www.googleapis.com/auth/gmail.readonly")
+    provider.addScope(appConfig.config.firebase.scopes)
     firebase.auth().signInWithRedirect(provider)
     localStorage.setItem("isGoogleSigninProgress", true)
 }

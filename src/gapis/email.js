@@ -1,24 +1,15 @@
+import * as firebase from 'firebase'
 import appConfig from '../store/storeDataInitConfig'
 import { changeDateFormat } from "../components/dateComponent"
 
-const initClient = () => {
-    gapi.load('client:auth2', initClientCbk)
+async function getAccessToken() {
+    const url = appConfig.config.url.getAccessToken
+    await fetch(url)
 }
 
-const initClientCbk = () => {
-    gapi.client.init({
-        apiKey: appConfig.config.firebase.apiKey,
-        clientId: appConfig.config.firebase.clientId,
-        discoveryDocs: "",
-        scope: appConfig.config.firebase.scopes
-    }).then(function () {
-        // Make sure the Google API Client is properly signed in
-        if (gapi.auth2.getAuthInstance().isSignedIn.get()) {
-            console.log("signed in")
-        } else {
-            firebase.auth().signOut(); // Something went wrong, sign out
-        }
-    })
+async function getEmailIds() {
+    const url = appConfig.config.url.getEmailIds
+    await fetch(url)
 }
 
 export const dataScrap = (vendor, message) => {
@@ -39,5 +30,5 @@ export const dataScrap = (vendor, message) => {
 }
 
 export {
-    initClient
+    getEmailIds
 }
