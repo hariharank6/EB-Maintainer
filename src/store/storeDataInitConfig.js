@@ -158,6 +158,7 @@ const storeData = {
       appId: "1:78882283244:web:32b4c867f51d073b628fc9",
       measurementId: "G-05F4E66EQ1",
       clientId: "78882283244-1i19eaguu2bc96ncc777lmq3d53bd39d.apps.googleusercontent.com",
+      clientSecret: "OUAowPrnvQMgamvn3TKDNDDn",
       scopes: "https://www.googleapis.com/auth/gmail.readonly"
     },
     "url": {

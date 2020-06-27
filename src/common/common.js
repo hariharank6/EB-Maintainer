@@ -10,7 +10,7 @@ export const changeDateFormat = (inputDate) => {
     const correctedDate = moment(inputDate).format(storeData.config.dateFormat)
     return correctedDate
 }
-const 
+
 const isEmailDataNeeded = (service) => {
     if (moment().diff(service.billData.billGeneratedDate, "days") > 60){
         return true

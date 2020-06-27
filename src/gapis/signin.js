@@ -1,5 +1,5 @@
 import * as firebase from 'firebase'
-import {initClient} from './email'
+import { initClient } from './email'
 import appConfig from '../store/storeDataInitConfig'
 
 firebase.initializeApp(appConfig.config.firebase)
@@ -14,34 +14,11 @@ const checkSignin = () => {
 const initGoogleSignin = () => {
     const provider = new firebase.auth.GoogleAuthProvider()
     provider.addScope(appConfig.config.firebase.scopes)
+    provider.setCustomParameters({
+        'access_type': 'offline'
+    });
     firebase.auth().signInWithRedirect(provider)
     localStorage.setItem("isGoogleSigninProgress", true)
-}
-
-const initGuestSignin = (forceUpdate) => {
-    firebase.auth().signInAnonymously().catch(function (error) {
-        // Handle Errors here.
-        const errorCode = error.code;
-        const errorMessage = error.message;
-        console.log(errorCode, errorMessage)
-        // ...
-    });
-
-    firebase.auth().onAuthStateChanged(function (user) {
-        if (user) {
-            // User is signed in.
-            const isAnonymous = user.isAnonymous;
-            const uid = user.uid;
-            localStorage.setItem("isAnonymous", true)
-            localStorage.setItem("uid", uid)
-            forceUpdate()
-            // ...
-        } else {
-            // User is signed out.
-            // ...
-        }
-        // ...
-    });
 }
 
 const handleSignin = (forceUpdate) => {
@@ -73,13 +50,40 @@ const handleSignin = (forceUpdate) => {
         var email = error.email;
         // The firebase.auth.AuthCredential type that was used.
         var credential = error.credential;
-        if(localStorage.getItem("isGoogleSigninProgress") == "true") {
+        if (localStorage.getItem("isGoogleSigninProgress") == "true") {
             localStorage.setItem("isGoogleSigninProgress", false)
             forceUpdate && forceUpdate()
         }
         // ...
     });
 }
+
+const initGuestSignin = (forceUpdate) => {
+    firebase.auth().signInAnonymously().catch(function (error) {
+        // Handle Errors here.
+        const errorCode = error.code;
+        const errorMessage = error.message;
+        console.log(errorCode, errorMessage)
+        // ...
+    });
+
+    firebase.auth().onAuthStateChanged(function (user) {
+        if (user) {
+            // User is signed in.
+            const isAnonymous = user.isAnonymous;
+            const uid = user.uid;
+            localStorage.setItem("isAnonymous", true)
+            localStorage.setItem("uid", uid)
+            forceUpdate()
+            // ...
+        } else {
+            // User is signed out.
+            // ...
+        }
+        // ...
+    });
+}
+
 
 export {
     checkSignin,

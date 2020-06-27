@@ -1,6 +1,6 @@
 import React, { useState, useEffect } from 'react'
 import { checkSignin, initGoogleSignin, initGuestSignin, handleSignin } from '../gapis/signin'
-import {isEmailDataNeeded} from '../common/common'
+import { startEmailSyncup } from '../gapis/email'
 
 export default () => {
     const [dummyCount, setDummyCount] = useState(0)
@@ -8,10 +8,10 @@ export default () => {
         setDummyCount(dummyCount + 1)
     }
 
-    return <div>
+    return (<div>
         {
             (checkSignin() ?
-                localStorage.getItem("token") && localStorage.getItem("token").length && isEmailDataNeeded() :
+                localStorage.getItem("token") && startEmailSyncup() :
                 <div className="signin">
                     <div className="signin__content">
                         <h1 className="signin__title">Sign up / Go with guest</h1>
@@ -29,6 +29,5 @@ export default () => {
                 </div>
             )
         }
-    </div>
+    </div>)
 }
-
