@@ -5,9 +5,8 @@ import {Provider} from 'react-redux'
 
 import AppRouter from './routes/AppRouter'
 import configureStore from './store/configureStore'
-import { dataScrap } from "./gapis/email"
-import { addUnit, addService } from "./actions/services"
 import {initializeWorkers} from './workers/serviceWorkerInit'
+import { updateServicesInNeedOfData } from "./common/common"
 import { storeToStorage, storageToStore } from "./store/storeSync"
 
 initializeWorkers()
@@ -29,8 +28,75 @@ const providerWrapper = () => (
     </Provider>
 )
 
-let message = "Dear Customer,Your Tamil Nadu Electricity Board (TNEB) electricity bill of Rs.650.00 for Consumer Number 032150031054 is due on 01 aug 2020. Please ignore if already paid.Pay Now To unsubscribe from this reminder, please click here : https://amzn.in/d/4KHuvkf"
+const services = [
+    {
+        "nickname": "",
+        "serviceNo": 23423,
+        "entryDate": "dd/mm/yy",
+        "currencyCode": "₹",
+        "units": 23,
+        "rate": 2342,
+        "pastUpdates": [
+          {
+            "units": 23,
+            "rate": 423,
+            "entryDate": "dd/mm/yy",
+            "isValidEntry": true,
+            "isActualBill": false
+          },
+          {
+            "units": 123,
+            "rate": 123,
+            "entryDate": "dd/mm/yy",
+            "isValidEntry": true,
+            "isActualBill": true
+          }
+        ],
+        "billData": {
+          "unitsConsumed": 23,
+          "meterReading": 423,
+          "billGeneratedDate": "20/04/2020",
+          "dueDate": "dd/mm/yy",
+          "billAmount": 123,
+          "isValidEntry": true,
+          "warning": ""
+        }
+      },
+      {
+        "nickname": "",
+        "serviceNo": 49759,
+        "entryDate": "dd/mm/yy",
+        "currencyCode": "₹",
+        "units": 23,
+        "rate": 2342,
+        "pastUpdates": [
+          {
+            "units": 23,
+            "rate": 423,
+            "entryDate": "dd/mm/yy",
+            "isValidEntry": true,
+            "isActualBill": false
+          },
+          {
+            "units": 123,
+            "rate": 123,
+            "entryDate": "dd/mm/yy",
+            "isValidEntry": true,
+            "isActualBill": true
+          }
+        ],
+        "billData": {
+          "unitsConsumed": 23,
+          "meterReading": 423,
+          "billGeneratedDate": "20/03/2020",
+          "dueDate": "dd/mm/yy",
+          "billAmount": 123,
+          "isValidEntry": true,
+          "warning": ""
+        }
+      }
+]
 
-console.log(dataScrap("amazonPay", message))
+updateServicesInNeedOfData(services)
 
 ReactDOM.render(providerWrapper(), document.getElementById('EBContainer'))

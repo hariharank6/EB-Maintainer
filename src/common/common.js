@@ -24,13 +24,20 @@ const changeDateFormat = (inputDate) => {
 }
 
 const updateServicesInNeedOfData = (services) => {
-    //update the global json here
-    if (moment().diff(service.billData.billGeneratedDate, "days") > 60){
-        return true
+    // update the global json here
+    let service
+    let updateNeededCount = 0
+    for (service of services){
+        if (moment().diff(moment(service.billData.billGeneratedDate, storeData.config.dateFormat), "days") > 60){
+            newBills.servicesData.services.push({
+                "serviceNo": service.serviceNo,
+                "dueDate": service.billData.dueDate,
+                "billAmount": service.billData.billAmount
+            })
+            updateNeededCount += 1
+        }
     }
-    else{
-        return false
-    }
+    newBills.servicesData.updateNeeded = updateNeededCount
 }
 
 export {

@@ -1,3 +1,4 @@
+import moment from "moment"
 import * as firebase from 'firebase'
 
 import appConfig from '../store/storeDataInitConfig'
@@ -38,7 +39,12 @@ export const dataScrap = (vendor, message) => {
             serviceNo,
             dueDate
         }
-        return messageData
+        for (let i = 0; i<newBills.servicesData.services.length; ++i){
+            if(newBills.servicesData.services[i].serviceNo == messageData.serviceNo && moment(newBills.servicesData.services[i].dueDate).diff(moment(messageData.dueDate, appConfig.config.dateFormat), "days") > 60){
+                newBills.servicesData.services[i] = messageData
+                newBills.servicesData.updatedCount += 1
+            }
+        }
     }
     else {
         console.log("Invalid Vendor")
@@ -49,7 +55,7 @@ const startEmailSyncup = (services) => {
     console.log("services:", services)
     updateServicesInNeedOfData(services)
     //dont return any count, just update it in newBills
-    if(newBills?.servicesData?.updateNeeded) {
+    if(newBills && newBills.servicesData && newBills.servicesData.updateNeeded && newBills.servicesData.updateNeeded != newBills.servicesData.updatedCount) {
         let emailIdentifiers = getEmailIdentifiers()
 
     }
