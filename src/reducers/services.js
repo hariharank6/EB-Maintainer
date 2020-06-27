@@ -1,3 +1,5 @@
+import moment from "moment"
+
 const calculateRate = ({units}, {meterReading}) => {
     const subsidy = 150
     let cost = 0
@@ -128,6 +130,41 @@ export default (state=[], action) => {
                 console.log("insufficient data for ADD_ALL_UNITS")
                 return state
             }
+
+        case "ADD_BILL_DATA":
+            if (state && action && action.data && action.data.serviceNo && action.data.dueDate && action.data.billAmount){
+                return state.map((service) => {
+                    if(service.serviceNo == action.data.serviceNo) {
+                        const billGeneratedDate = moment(action.data.dueDate).subtract(20, "days")
+                        const unitsConsumed = calculateUnits(action.data.billAmount)
+                        const meterReading = service.billData.meterReading + unitsConsumed
+
+                        let clonedService = Object.assign({}, service)
+                        const pastUpdateData = {
+                            "unitsConsumed": clonedService.billData.unitsConsumed,
+                            "meterReading": clonedService.billData.meterReading,
+                            "billGeneratedDate": clonedService.billData.billGeneratedDate,
+                            "dueDate": clonedService.billData.dueDate,
+                            "billAmount": clonedService.billData.billAmount,
+                            "warning": clonedService.billData.warning
+                        }
+
+                        clonedService.billData.unitsConsumed = unitsConsumed
+                        clonedService.billData.meterReading = meterReading 
+                        clonedService.billData.billGeneratedDate = billGeneratedDate
+                        clonedService.billData.dueDate = action.data.dueDate
+                        clonedService.billData.billAmount = action.data.billAmount
+                        clonedService.pastUpdates.push(pastUpdateData)
+                        return clonedService
+                    }
+                    return service
+                })
+            }
+            else {
+                console.log("Insufficient data for ADD_BILL_DATA reducer")
+                return state
+            }
+            
         default:
             return state
     }
