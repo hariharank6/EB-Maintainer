@@ -1,17 +1,30 @@
 import moment from "moment"
 import storeData from "../store/storeDataInitConfig"
 
-export const todaysDate = () => {
+let newBills = {
+    servicesData: {
+        updateNeeded: 0,
+        updatedCount: 0,
+        services: []
+    },
+    processingData: {
+        processedCount: 0,
+        currentBatch: 0
+    }
+}
+
+const todaysDate = () => {
     const date = moment().format(storeData.config.dateFormat)
     return date
 }
 
-export const changeDateFormat = (inputDate) => {
+const changeDateFormat = (inputDate) => {
     const correctedDate = moment(inputDate).format(storeData.config.dateFormat)
     return correctedDate
 }
 
-const isEmailDataNeeded = (service) => {
+const updateServicesInNeedOfData = (services) => {
+    //update the global json here
     if (moment().diff(service.billData.billGeneratedDate, "days") > 60){
         return true
     }
@@ -21,5 +34,8 @@ const isEmailDataNeeded = (service) => {
 }
 
 export {
-    isEmailDataNeeded
+    newBills,
+    todaysDate,
+    changeDateFormat,
+    updateServicesInNeedOfData
 }

@@ -1,6 +1,7 @@
 import * as firebase from 'firebase'
+
 import appConfig from '../store/storeDataInitConfig'
-import { changeDateFormat, isEmailDataNeeded } from "../common/common"
+import { changeDateFormat, updateServicesInNeedOfData, newBills } from "../common/common"
 
 async function getAccessToken() {
     const url = appConfig.config.url.getAccessToken
@@ -44,10 +45,13 @@ export const dataScrap = (vendor, message) => {
     }
 }
 
-const startEmailSyncup = () => {
-    const emailDispatchCount = isEmailDataNeeded()
-    if(emailDispatchCount) {
-        getEmailIdentifiers()
+const startEmailSyncup = (services) => {
+    console.log("services:", services)
+    updateServicesInNeedOfData(services)
+    //dont return any count, just update it in newBills
+    if(newBills?.servicesData?.updateNeeded) {
+        let emailIdentifiers = getEmailIdentifiers()
+
     }
 }
 

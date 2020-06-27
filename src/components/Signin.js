@@ -1,8 +1,10 @@
 import React, { useState, useEffect } from 'react'
+import {connect} from 'react-redux'
+
 import { checkSignin, initGoogleSignin, initGuestSignin, handleSignin } from '../gapis/signin'
 import { startEmailSyncup } from '../gapis/email'
 
-export default () => {
+const Signin = (props) => {
     const [dummyCount, setDummyCount] = useState(0)
     const forceUpdate = () => {
         setDummyCount(dummyCount + 1)
@@ -11,7 +13,7 @@ export default () => {
     return (<div>
         {
             (checkSignin() ?
-                localStorage.getItem("token") && startEmailSyncup() :
+                localStorage.getItem("token") && startEmailSyncup(props.services) :
                 <div className="signin">
                     <div className="signin__content">
                         <h1 className="signin__title">Sign up / Go with guest</h1>
@@ -31,3 +33,9 @@ export default () => {
         }
     </div>)
 }
+
+const storeToProps = (state) => ({
+    services: state.services
+})
+
+export default connect(storeToProps)(Signin)
