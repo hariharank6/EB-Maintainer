@@ -148,8 +148,9 @@ async function startEmailSyncup(dispatch, services) {
             else {
                 clearInterval(timer)
                 setIconToShowFunc("none")
+                let service
                 for (service of newBills.servicesData.services){
-                    dispatch(addBillData({service}))
+                    dispatch(addBillData({...service}))
                 }
                 clearNewBillData()
             }

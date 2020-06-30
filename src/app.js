@@ -6,7 +6,6 @@ import {Provider} from 'react-redux'
 import AppRouter from './routes/AppRouter'
 import configureStore from './store/configureStore'
 import {initializeWorkers} from './workers/serviceWorkerInit'
-import { updateServicesInNeedOfData } from "./common/common"
 import { storeToStorage, storageToStore } from "./store/storeSync"
 
 initializeWorkers()

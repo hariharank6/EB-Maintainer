@@ -1,4 +1,5 @@
 import moment from "moment"
+import storeData from "../store/storeDataInitConfig"
 
 const calculateRate = ({units}, {meterReading}) => {
     const subsidy = 150
@@ -135,7 +136,7 @@ export default (state=[], action) => {
             if (state && action && action.data && action.data.serviceNo && action.data.dueDate && action.data.billAmount){
                 return state.map((service) => {
                     if(service.serviceNo == action.data.serviceNo) {
-                        const billGeneratedDate = moment(action.data.dueDate).subtract(20, "days")
+                        const billGeneratedDate = moment(action.data.dueDate, storeData.config.dateFormat).subtract(20, "days")
                         const unitsConsumed = calculateUnits(action.data.billAmount)
                         const meterReading = service.billData.meterReading + unitsConsumed
 

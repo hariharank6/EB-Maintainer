@@ -77,7 +77,7 @@ const storeData = {
       "serviceNo": 2150031055,
       "entryDate": "15/04/2020",
       "currencyCode": "₹",
-      "units": 120,
+      "units": 300,
       "rate": 0,
       "pastUpdates": [],
       "billData": {
