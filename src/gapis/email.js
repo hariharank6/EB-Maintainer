@@ -2,7 +2,7 @@ import moment from "moment"
 import * as firebase from 'firebase'
 
 import appConfig from '../store/storeDataInitConfig'
-import { changeDateFormat, updateServicesInNeedOfData, newBills } from "../common/common"
+import { changeDateFormat, updateServicesInNeedOfData, newBills, clearNewBillData } from "../common/common"
 import {addBillData} from '../actions/services'
 
 let emailSyncData = {
@@ -85,12 +85,13 @@ const dataScrapper = (vendor, message) => {
             serviceNo,
             dueDate
         }
+        console.log("message data", messageData)
         for (let i = 0; i < newBills.servicesData.services.length; i++) {
-            console.log("message data", messageData)
             if (newBills.servicesData.services[i].serviceNo == messageData.serviceNo) {
-                if (moment(messageData.dueDate, appConfig.config.dateFormat).diff(moment(newBills.servicesData.services[i].dueDate), "days") > 45) {
+                if (moment(messageData.dueDate, appConfig.config.dateFormat).diff(moment(newBills.servicesData.services[i].dueDate, appConfig.config.dateFormat), "days") > 30) {
                     newBills.servicesData.services[i] = messageData
                     newBills.servicesData.updatedCount += 1
+                    console.log("updatedCount:", newBills)
                 }
             }
         }
@@ -98,6 +99,8 @@ const dataScrapper = (vendor, message) => {
     else {
         console.log("Invalid Vendor")
     }
+    newBills.processingData.processedCount += 1
+    console.log(newBills)
 }
 
 const getEmailData = (emailIdentifier, dataScrapper) => {
@@ -125,12 +128,18 @@ async function startEmailSyncup(dispatch, services) {
                 if (newBills.processingData.processedCount == newBills.processingData.currentBatch * newBills.servicesData.updateNeeded || appConfig.config.email.emailBatchTimeGap == emailBatchTimeGapCount) {
                     emailBatchTimeGapCount = 0
                     if (++newBills.processingData.currentBatch < appConfig.config.email.emailBatchThreshold) {
-                        for (let i = (newBills.processingData.currentBatch - 1) * appConfig.config.email.emailBatchThreshold; i < appConfig.config.email.emailBatchThreshold * newBills.processingData.currentBatch; i++) {
+                        for (let i = (newBills.processingData.currentBatch - 1) * appConfig.config.email.emailBatchThreshold; i < appConfig.config.email.emailBatchThreshold * newBills.processingData.currentBatch && emailSyncData.emailIdentifiers.length > i; i++) {
+                            console.log(i,emailSyncData.emailIdentifiers[i])
                             getEmailData(emailSyncData.emailIdentifiers[i].id, dataScrapper)
                         }
                     }
                     else {
                         clearInterval(timer)
+                        console.log(newBills)
+                        for (service of newBills.servicesData.services){
+                            dispatch(addBillData({service}))
+                        }
+                        clearNewBillData()
                     }
                 }
                 else {
@@ -139,7 +148,11 @@ async function startEmailSyncup(dispatch, services) {
             }
             else {
                 clearInterval(timer)
-                newBills.servicesData.services.map((service) => dispatch(addBillData({service})))
+                console.log(newBills)
+                for (service of newBills.servicesData.services){
+                    dispatch(addBillData({service}))
+                }
+                clearNewBillData()
             }
         }, appConfig.config.email.emailBatchTimeGap * 1000)
     }
