@@ -3,6 +3,14 @@
     box-sizing: border-box;
 }
 
+.hidden {
+    display: none;
+}
+
+.show {
+    display: block !important;
+}
+
 body {
     font-family: $Helvetica-font;
     font-size: $font-size-m;

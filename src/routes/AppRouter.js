@@ -1,7 +1,7 @@
 import React from 'react'
 import { Route, Switch, BrowserRouter } from 'react-router-dom'
 
-import Header from '../components/Header'
+import {Header} from '../components/Header'
 import Signin from '../components/Signin'
 import HomePage from '../components/HomePage'
 import AddAllPage from '../components/AddAllPage'
