@@ -45,7 +45,6 @@ export default class Service extends React.Component {
                                 <div className="service__bill-content">
                                     <div className="service__due-date">DueDate: {this.props.service.billData.dueDate}</div>
                                     <div className="service__bill-amount">Bill Amount: {this.props.service.currencyCode + this.props.service.billData.billAmount}</div>
-                                    <div className="service__payment-status">Payment Status: {this.props.service.billData.paymentDate ? "Paid" : "Not Paid"}</div>
                                 </div>
                             </div>
                         }

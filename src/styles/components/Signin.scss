@@ -15,10 +15,48 @@
     left: 10%;
     background: #f0ebfd;
     padding: 20px;
+    border-radius: 10px;
 }
 
 .signin__buttonsHolder {
     margin: 40px 0px 0px;
     display: flex;
     justify-content: space-evenly;
+}
+
+h1.signin__title {
+    text-align: center;
+}
+
+.signin__notOptimised {
+    display: none;
+}
+
+.signin__google,
+.signin__guest {
+    width: 100px;
+    height: 35px;
+    display: flex;
+    align-items: center;
+    justify-content: space-evenly;
+    border-color: #dbd3f2;
+    border-radius: 4px;
+}
+
+@media (min-width:768px) {
+    .signin__content {
+        width: 25%;
+        top: unset;
+        left: unset;
+    }
+
+    .signin {
+        display: flex;
+        align-items: center;
+        justify-content: center;
+    }
+
+    .signin__notOptimised {
+        display: block;
+    }
 }

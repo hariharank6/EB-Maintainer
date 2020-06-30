@@ -18,6 +18,20 @@ div#EBContainer {
     overflow: auto;
 }
 
+@media (min-width:768px) {
+    div#EBContainer {
+        max-width: 768px;
+        margin: 10vh auto;
+        height: 80vh;
+        min-height: 50vh;
+        position: relative;
+    }
+
+    .header__button-wrapper {
+        position: absolute !important;
+    }
+}
+
 // modifiers spec
 .button--disabled {
     cursor: default;

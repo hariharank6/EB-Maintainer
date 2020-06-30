@@ -5,7 +5,7 @@ import appConfig from '../store/storeDataInitConfig'
 firebase.initializeApp(appConfig.config.firebase)
 firebase.analytics()
 
-const getUser = () => {
+const getUser = (setIsSignedin) => {
     return new Promise((resolve, reject) => {
         if (firebase.auth().currentUser) {
             resolve(firebase.auth().currentUser)
@@ -17,9 +17,19 @@ const getUser = () => {
                     // firebase.auth().signOut().then(()=> {
                     //     console.log("signed out")
                     // })
+                    if(user.isAnonymous) {
+                        localStorage.setItem("signinStatus", "guest")    
+                        setIsSignedin("guest")
+                    }
+                    else {
+                        localStorage.setItem("signinStatus", "signedin")
+                        setIsSignedin("signedin")
+                    }
                     resolve(user)
                 } else {
                     // No user is signed in.
+                    localStorage.setItem("signinStatus", "unknown")
+                    setIsSignedin("unknown")
                     reject(null)
                 }
             });
@@ -38,7 +48,7 @@ const initGoogleSignin = () => {
         'access_type': 'offline'
     });
     firebase.auth().signInWithRedirect(provider)
-    localStorage.setItem("isGoogleSigninProgress", true)
+    localStorage.setItem("signinStatus", "inprogress")
 }
 
 const handleSignin = () => {
@@ -55,7 +65,7 @@ const handleSignin = () => {
             localStorage.setItem("userEmail", user.email)
             // localStorage.setItem("token", user.refreshToken)
             localStorage.setItem("uid", user.uid)
-            localStorage.removeItem("isGoogleSigninProgress")
+            // localStorage.removeItem("isGoogleSigninProgress")
             // setIsSignedin && setIsSignedin("signedin")
         }
         // else {
@@ -78,7 +88,7 @@ const handleSignin = () => {
     });
 }
 
-const initGuestSignin = () => {
+const initGuestSignin = (setIsSignedin) => {
     firebase.auth().signInAnonymously().catch(function (error) {
         // Handle Errors here.
         const errorCode = error.code;
@@ -90,15 +100,17 @@ const initGuestSignin = () => {
     firebase.auth().onAuthStateChanged(function (user) {
         if (user) {
             // User is signed in.
-            const isAnonymous = user.isAnonymous;
+            // const isAnonymous = user.isAnonymous;
             const uid = user.uid;
-            localStorage.setItem("isAnonymous", true)
+            localStorage.setItem("signinStatus", "guest")
+            setIsSignedin("guest")
             localStorage.setItem("uid", uid)
             // setIsSignedin()
             // ...
         } else {
             // User is signed out.
             // ...
+            setIsSignedin("unknown")
         }
         // ...
     });

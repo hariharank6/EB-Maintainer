@@ -1,5 +1,5 @@
 import React from 'react'
-import {Route, Switch, BrowserRouter} from 'react-router-dom'
+import { Route, Switch, BrowserRouter } from 'react-router-dom'
 
 import Header from '../components/Header'
 import Signin from '../components/Signin'
@@ -12,15 +12,13 @@ import PageNotFound from '../components/PageNotFound'
 export default () => (
     <BrowserRouter>
         <div>
-            <Header></Header>
             <Signin></Signin>
-            <Switch>
-                <Route path="/" component={HomePage} exact={true}></Route>
-                <Route path="/addall" component={AddAllPage} exact={true}></Route>
-                <Route path="/add/:serviceNo" component={AddService} exact={true}></Route>
-                <Route path="/suggestions" component={SuggestionPage} exact={true}></Route>
-                <Route component={PageNotFound}></Route>
-            </Switch>
+            <Route path="*" component={Header}></Route>
+            <Route path="/" component={HomePage} exact={true}></Route>
+            <Route path="/addall" component={AddAllPage} exact={true}></Route>
+            <Route path="/add/:serviceNo" component={AddService} exact={true}></Route>
+            <Route path="/suggestions" component={SuggestionPage} exact={true}></Route>
+            <Route component={PageNotFound}></Route>
         </div>
     </BrowserRouter>
 )

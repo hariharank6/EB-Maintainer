@@ -58,15 +58,20 @@ async function getAccessToken() {
 
 async function getEmailIdentifiers() {
     return firebase.auth().currentUser.getIdToken(true).then((token) => {
-        let result = gapi.client.gmail.users.messages.list({
-            'userId': localStorage.getItem("userEmail"),
-            'q': appConfig.config.email.emailQuery
-        })
-        result.execute((emailIdentifiers) => {
-            console.log(emailIdentifiers)
-            emailSyncData.emailIdentifiers = emailIdentifiers.messages
-            Promise.resolve()
-        })
+        if(localStorage.getItem("userEmail")) {
+            let result = gapi.client.gmail.users.messages.list({
+                'userId': localStorage.getItem("userEmail"),
+                'q': appConfig.config.email.emailQuery
+            })
+            result.execute((emailIdentifiers) => {
+                console.log(emailIdentifiers)
+                emailSyncData.emailIdentifiers = emailIdentifiers.messages
+                Promise.resolve()
+            })
+        }
+        else {
+            Promise.reject()
+        }
     })
 }
 

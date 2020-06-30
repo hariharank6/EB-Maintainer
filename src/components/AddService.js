@@ -23,7 +23,7 @@ class AddService extends React.Component {
             this.setState(() => ({units}))
         }
     }
-    addUnit(event) {
+    addUnit() {
         const units = this.state.units
         const entryDate = "dd/mm/yy"
         this.props.dispatch(addUnit({serviceNo: this.state.serviceNo, units, entryDate}))
@@ -38,8 +38,8 @@ class AddService extends React.Component {
                         <input type="number" value={this.state.units} onChange={this.handleInput} className="addservice__add-unit" placeholder="Enter the current Unit:"></input>
                         {!this.props.isAddAllEmbed &&
                             <div className="addservice__buttons-container">
-                                <button className="addservice__add-button" onClick={this.addUnit}>ADD</button>
                                 <Link to="/" className="addservice__cancel"><button className="addservice__cancel-button">CANCEL</button></Link>
+                                <button className="addservice__add-button" onClick={this.addUnit}>ADD</button>
                             </div>
                         }
                     </div>
