@@ -148,19 +148,25 @@ const storeData = {
   "suggestions": {},
   "config": {
     "dateFormat": "DD/MM/YYYY",
-    "emailBatchThreshold": 4,
+    "email": {
+      "emailBatchThreshold": 4,
+      "emailBatchTimeGap": 10,
+      "emailVendor": "amazonPay",
+      "emailQuery": "from:rpe-reminders@amazon.com"
+    },
     "firebase": {
-      apiKey: "AIzaSyAaarrq5v54_ux71LtMyu0UQ86pjQZZheY",
-      authDomain: "eb-maintainer.firebaseapp.com",
-      databaseURL: "https://eb-maintainer.firebaseio.com",
-      projectId: "eb-maintainer",
-      storageBucket: "eb-maintainer.appspot.com",
-      messagingSenderId: "78882283244",
-      appId: "1:78882283244:web:32b4c867f51d073b628fc9",
-      measurementId: "G-05F4E66EQ1",
-      clientId: "78882283244-1i19eaguu2bc96ncc777lmq3d53bd39d.apps.googleusercontent.com",
-      clientSecret: "OUAowPrnvQMgamvn3TKDNDDn",
-      scopes: "https://www.googleapis.com/auth/gmail.readonly"
+      apiKey: "AIzaSyAqt1B3qFs3pzukFvtr6icqmf2g7zqquxw",
+      authDomain: "electricity-tracker-personal.firebaseapp.com",
+      databaseURL: "https://electricity-tracker-personal.firebaseio.com",
+      projectId: "electricity-tracker-personal",
+      storageBucket: "electricity-tracker-personal.appspot.com",
+      messagingSenderId: "426946603646",
+      appId: "1:426946603646:web:0bec50e2a5da2237a8062f",
+      measurementId: "G-6N4L7TBHB8",
+      clientId: "426946603646-706sfnnipmiqv8sm9h09ggj14a13ep0q.apps.googleusercontent.com",
+      clientSecret: "vYg-FMGdUenIRSkd-N3acfg6",
+      scopes: "https://www.googleapis.com/auth/gmail.readonly",
+      discoveryDocs : ""
     },
     "url": {
       "getAccessToken": "https://www.googleapis.com/oauth2/v4/token",

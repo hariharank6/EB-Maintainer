@@ -28,7 +28,7 @@ const updateServicesInNeedOfData = (services) => {
     let service
     let updateNeededCount = 0
     for (service of services){
-        if (moment().diff(moment(service.billData.billGeneratedDate, storeData.config.dateFormat), "days") > 60){
+        if (moment().diff(moment(service.billData.billGeneratedDate, storeData.config.dateFormat), "days") > 45){
             newBills.servicesData.services.push({
                 "serviceNo": service.serviceNo,
                 "dueDate": service.billData.dueDate,
@@ -38,6 +38,7 @@ const updateServicesInNeedOfData = (services) => {
         }
     }
     newBills.servicesData.updateNeeded = updateNeededCount
+    console.log("newBills", newBills)
 }
 
 export {
