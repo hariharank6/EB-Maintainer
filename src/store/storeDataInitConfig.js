@@ -34,57 +34,57 @@ const storeData = {
     //     "isValidEntry": true
     //   }
     // },
-    // {
-    //   "nickname": "name-1053",
-    //   "serviceNo": 2150031053,
-    //   "entryDate": "15/04/2020",
-    //   "currencyCode": "₹",
-    //   "units": 770,
-    //   "rate": 0,
-    //   "pastUpdates": [],
-    //   "billData": {
-    //     "unitsConsumed": 550,
-    //     "meterReading": 760,
-    //     "billGeneratedDate": "12/04/2020",
-    //     "dueDate": "02/05/2020",
-    //     "billAmount": 2110,
-    //     "isValidEntry": true
-    //   }
-    // },
-    // {
-    //   "nickname": "name-1054",
-    //   "serviceNo": 2150031054,
-    //   "entryDate": "15/04/2020",
-    //   "currencyCode": "₹",
-    //   "units": 470,
-    //   "rate": 0,
-    //   "pastUpdates": [],
-    //   "billData": {
-    //     "unitsConsumed": 330,
-    //     "meterReading": 460,
-    //     "billGeneratedDate": "12/04/2020",
-    //     "dueDate": "02/05/2020",
-    //     "billAmount": 620,
-    //     "isValidEntry": true
-    //   }
-    // },
     {
-      "nickname": "name-1055",
-      "serviceNo": 2150031055,
+      "nickname": "name-1053",
+      "serviceNo": 2150031053,
       "entryDate": "15/04/2020",
       "currencyCode": "₹",
-      "units": 130,
+      "units": 770,
       "rate": 0,
       "pastUpdates": [],
       "billData": {
-        "unitsConsumed": 80,
-        "meterReading": 110,
+        "unitsConsumed": 550,
+        "meterReading": 760,
         "billGeneratedDate": "12/04/2020",
         "dueDate": "02/05/2020",
-        "billAmount": 0,
+        "billAmount": 2110,
         "isValidEntry": true
       }
     },
+    {
+      "nickname": "name-1054",
+      "serviceNo": 2150031054,
+      "entryDate": "15/04/2020",
+      "currencyCode": "₹",
+      "units": 470,
+      "rate": 0,
+      "pastUpdates": [],
+      "billData": {
+        "unitsConsumed": 330,
+        "meterReading": 460,
+        "billGeneratedDate": "12/04/2020",
+        "dueDate": "02/05/2020",
+        "billAmount": 620,
+        "isValidEntry": true
+      }
+    },
+    // {
+    //   "nickname": "name-1055",
+    //   "serviceNo": 2150031055,
+    //   "entryDate": "15/04/2020",
+    //   "currencyCode": "₹",
+    //   "units": 130,
+    //   "rate": 0,
+    //   "pastUpdates": [],
+    //   "billData": {
+    //     "unitsConsumed": 80,
+    //     "meterReading": 110,
+    //     "billGeneratedDate": "12/04/2020",
+    //     "dueDate": "02/05/2020",
+    //     "billAmount": 0,
+    //     "isValidEntry": true
+    //   }
+    // },
     {
       "nickname": "name-1056",
       "serviceNo": 2150031056,
@@ -102,23 +102,23 @@ const storeData = {
         "isValidEntry": true
       }
     },
-    {
-      "nickname": "name-717",
-      "serviceNo": 215003717,
-      "entryDate": "15/04/2020",
-      "currencyCode": "₹",
-      "units": 660,
-      "rate": 0,
-      "pastUpdates": [],
-      "billData": {
-        "unitsConsumed": 390,
-        "meterReading": 520,
-        "billGeneratedDate": "12/04/2020",
-        "dueDate": "02/05/2020",
-        "billAmount": 800,
-        "isValidEntry": true
-      }
-    },
+    // {
+    //   "nickname": "name-717",
+    //   "serviceNo": 215003717,
+    //   "entryDate": "15/04/2020",
+    //   "currencyCode": "₹",
+    //   "units": 660,
+    //   "rate": 0,
+    //   "pastUpdates": [],
+    //   "billData": {
+    //     "unitsConsumed": 390,
+    //     "meterReading": 520,
+    //     "billGeneratedDate": "12/04/2020",
+    //     "dueDate": "02/05/2020",
+    //     "billAmount": 800,
+    //     "isValidEntry": true
+    //   }
+    // },
     {
       "nickname": "name-785",
       "serviceNo": 215003785,
@@ -142,8 +142,10 @@ const storeData = {
     "dateFormat": "DD/MM/YYYY",
     "amazonPayDateFormat": "DD MMMM YYYY",
     "email": {
-      "emailBatchThreshold": 4,
-      "emailBatchTimeGap": 10,
+      "emailBatchThreshold": 4, //Maximum number of batches to be executed
+      "emailsPerBatch": 5,  //No of emails to be processed as a batch
+      "emailBatchTimeGap": 6, //Wait time/Time gap between two consecutive batches
+      "maxEmailBatchSkip": 10, //Maximum number of skips between batches(on waiting for data)/used to overcome call failures
       "emailVendor": "amazonPay",
       "emailQuery": "from:rpe-reminders@amazon.com"
     },

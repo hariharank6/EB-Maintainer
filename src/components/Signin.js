@@ -36,7 +36,7 @@ const Signin = (props) => {
                         </div>) :
                         (<div className="signin__buttonsHolder">
                             <button className="signin__google" onClick={initGoogleSignin}>
-                                <img style={{width:20 + 'px'}} src="https://upload.wikimedia.org/wikipedia/commons/thumb/5/53/Google_%22G%22_Logo.svg/512px-Google_%22G%22_Logo.svg.png" className="signin__googleImg"></img>
+                                <img style={{width:20 + 'px'}} src="/icons/Google_logo.webp" className="signin__googleImg"></img>
                                 <div>Google</div>
                                 </button>
                             <button className="signin__guest" onClick={(setIsSignedin) => initGuestSignin()}>Guest</button>

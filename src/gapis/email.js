@@ -94,6 +94,7 @@ const dataScrapper = (vendor, message) => {
                 }
             }
         }
+        console.log("scrapped data:", messageData)
     }
     else {
         console.log("Invalid Vendor")
@@ -108,6 +109,7 @@ const getEmailData = (emailIdentifier, dataScrapper) => {
             'id': emailIdentifier
         })
         result.execute((emailData) => {
+            console.log("Email data:", emailData)
             dataScrapper(appConfig.config.email.emailVendor, emailData.snippet)
         })
     })
@@ -124,11 +126,13 @@ async function startEmailSyncup(dispatch, services) {
         let emailBatchTimeGapCount = 0
         let timer = setInterval(() => {
             if (newBills.servicesData.updateNeeded > newBills.servicesData.updatedCount) {
-                if (newBills.processingData.processedCount == newBills.processingData.currentBatch * newBills.servicesData.updateNeeded || appConfig.config.email.emailBatchTimeGap == emailBatchTimeGapCount) {
+                if (newBills.processingData.processedCount == newBills.processingData.currentBatch * appConfig.config.email.emailsPerBatch || appConfig.config.email.maxEmailBatchSkip == emailBatchTimeGapCount) {
                     emailBatchTimeGapCount = 0
                     if (++newBills.processingData.currentBatch < appConfig.config.email.emailBatchThreshold) {
-                        for (let i = (newBills.processingData.currentBatch - 1) * appConfig.config.email.emailBatchThreshold; i < appConfig.config.email.emailBatchThreshold * newBills.processingData.currentBatch && emailSyncData.emailIdentifiers.length > i; i++) {
-                            getEmailData(emailSyncData.emailIdentifiers[i].id, dataScrapper)
+                        for (let i = (newBills.processingData.currentBatch - 1) * appConfig.config.email.emailsPerBatch; i < appConfig.config.email.emailsPerBatch * newBills.processingData.currentBatch && emailSyncData.emailIdentifiers.length > i; i++) {
+                            (function(i) {
+                                getEmailData(emailSyncData.emailIdentifiers[i].id, dataScrapper)
+                            }(i))
                         }
                     }
                     else {
