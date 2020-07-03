@@ -19,7 +19,7 @@ const todaysDate = () => {
 }
 
 const changeDateFormat = (inputDate) => {
-    const correctedDate = moment(inputDate).format(storeData.config.dateFormat)
+    const correctedDate = moment(inputDate, storeData.config.amazonPayDateFormat).format(storeData.config.dateFormat)
     return correctedDate
 }
 
@@ -38,7 +38,7 @@ const updateServicesInNeedOfData = (services) => {
         }
     }
     newBills.servicesData.updateNeeded = updateNeededCount
-    console.log("newBills", newBills)
+    // console.log("newBills", newBills)
 }
 
 const clearNewBillData = () => {
