@@ -140,6 +140,7 @@ const storeData = {
   "suggestions": {},
   "config": {
     "dateFormat": "DD/MM/YYYY",
+    "amazonPayDateFormat": "DD MMMM YYYY",
     "email": {
       "emailBatchThreshold": 4,
       "emailBatchTimeGap": 10,
