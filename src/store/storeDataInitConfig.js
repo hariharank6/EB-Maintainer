@@ -73,7 +73,7 @@ const storeData = {
       "serviceNo": 2150031055,
       "entryDate": "15/04/2020",
       "currencyCode": "₹",
-      "units": 300,
+      "units": 130,
       "rate": 0,
       "pastUpdates": [],
       "billData": {
@@ -90,7 +90,7 @@ const storeData = {
       "serviceNo": 2150031056,
       "entryDate": "15/04/2020",
       "currencyCode": "₹",
-      "units": 260,
+      "units": 462,
       "rate": 0,
       "pastUpdates": [],
       "billData": {
@@ -107,7 +107,7 @@ const storeData = {
       "serviceNo": 215003717,
       "entryDate": "15/04/2020",
       "currencyCode": "₹",
-      "units": 530,
+      "units": 660,
       "rate": 0,
       "pastUpdates": [],
       "billData": {
@@ -124,7 +124,7 @@ const storeData = {
       "serviceNo": 215003785,
       "entryDate": "15/04/2020",
       "currencyCode": "₹",
-      "units": 290,
+      "units": 425,
       "rate": 0,
       "pastUpdates": [],
       "billData": {
@@ -141,8 +141,8 @@ const storeData = {
   "config": {
     "dateFormat": "DD/MM/YYYY",
     "email": {
-      "emailBatchThreshold": 10,
-      "emailBatchTimeGap": 4,
+      "emailBatchThreshold": 4,
+      "emailBatchTimeGap": 10,
       "emailVendor": "amazonPay",
       "emailQuery": "from:rpe-reminders@amazon.com"
     },
