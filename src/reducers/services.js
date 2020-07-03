@@ -22,7 +22,7 @@ const calculateRate = ({units}, {meterReading}) => {
     return finalPrice
 }
 
-const calculateUnits = ({billAmount}) => {
+const calculateUnits = (billAmount) => {
     const subsidy = 150
     let units = 0
     const fixedPrice = [0, 20, 30, 50]
@@ -133,7 +133,7 @@ export default (state=[], action) => {
             }
 
         case "ADD_BILL_DATA":
-            if (state && action && action.data && action.data.serviceNo && action.data.dueDate && action.data.billAmount){
+            if (state && action && action.data && action.data.serviceNo && action.data.dueDate && typeof action.data.billAmount != "undefined"){
                 return state.map((service) => {
                     if(service.serviceNo == action.data.serviceNo) {
                         const billGeneratedDate = moment(action.data.dueDate, storeData.config.dateFormat).subtract(20, "days")
@@ -146,8 +146,7 @@ export default (state=[], action) => {
                             "meterReading": clonedService.billData.meterReading,
                             "billGeneratedDate": clonedService.billData.billGeneratedDate,
                             "dueDate": clonedService.billData.dueDate,
-                            "billAmount": clonedService.billData.billAmount,
-                            "warning": clonedService.billData.warning
+                            "billAmount": clonedService.billData.billAmount
                         }
 
                         clonedService.billData.unitsConsumed = unitsConsumed

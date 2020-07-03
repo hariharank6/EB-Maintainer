@@ -102,7 +102,7 @@ const dataScrapper = (vendor, message) => {
 }
 
 const getEmailData = (emailIdentifier, dataScrapper) => {
-    firebase.auth().currentUser.getIdToken(true).then(function (token) {
+    firebase.auth().currentUser.getIdToken().then(function (token) {
         let result = gapi.client.gmail.users.messages.get({
             'userId': localStorage.getItem("userEmail"),
             'id': emailIdentifier
@@ -136,7 +136,8 @@ async function startEmailSyncup(dispatch, services) {
                         setIconToShowFunc("failed")
                         let service
                         for (service of newBills.servicesData.services){
-                            dispatch(addBillData({service}))
+                            let test = addBillData({...service})
+                            dispatch(test)
                         }
                         clearNewBillData()
                     }

@@ -14,7 +14,6 @@ const storeData = {
     //     "billGeneratedDate": "19/04/2020",
     //     "dueDate": "9/05/2020",
     //     "billAmount": 0,
-    //     "paymentDate": "9/05/2020",
     //     "isValidEntry": true
     //   }
     // },
@@ -32,7 +31,6 @@ const storeData = {
     //     "billGeneratedDate": "24/03/2020",
     //     "dueDate": "15/04/2020",
     //     "billAmount": 830,
-    //     "paymentDate": "14/04/2020",
     //     "isValidEntry": true
     //   }
     // },
@@ -50,7 +48,6 @@ const storeData = {
     //     "billGeneratedDate": "12/04/2020",
     //     "dueDate": "02/05/2020",
     //     "billAmount": 2110,
-    //     "paymentDate": "02/05/2020",
     //     "isValidEntry": true
     //   }
     // },
@@ -68,7 +65,6 @@ const storeData = {
     //     "billGeneratedDate": "12/04/2020",
     //     "dueDate": "02/05/2020",
     //     "billAmount": 620,
-    //     "paymentDate": "02/05/2020",
     //     "isValidEntry": true
     //   }
     // },
@@ -86,7 +82,6 @@ const storeData = {
         "billGeneratedDate": "12/04/2020",
         "dueDate": "02/05/2020",
         "billAmount": 0,
-        "paymentDate": "02/05/2020",
         "isValidEntry": true
       }
     },
@@ -104,7 +99,6 @@ const storeData = {
         "billGeneratedDate": "12/04/2020",
         "dueDate": "02/05/2020",
         "billAmount": 155,
-        "paymentDate": "02/05/2020",
         "isValidEntry": true
       }
     },
@@ -122,7 +116,6 @@ const storeData = {
         "billGeneratedDate": "12/04/2020",
         "dueDate": "02/05/2020",
         "billAmount": 800,
-        "paymentDate": "02/05/2020",
         "isValidEntry": true
       }
     },
@@ -140,7 +133,6 @@ const storeData = {
         "billGeneratedDate": "12/04/2020",
         "dueDate": "02/05/2020",
         "billAmount": 140,
-        "paymentDate": "02/05/2020",
         "isValidEntry": true
       }
     }
@@ -149,8 +141,8 @@ const storeData = {
   "config": {
     "dateFormat": "DD/MM/YYYY",
     "email": {
-      "emailBatchThreshold": 4,
-      "emailBatchTimeGap": 10,
+      "emailBatchThreshold": 10,
+      "emailBatchTimeGap": 4,
       "emailVendor": "amazonPay",
       "emailQuery": "from:rpe-reminders@amazon.com"
     },
