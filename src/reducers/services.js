@@ -1,6 +1,7 @@
 import moment from "moment"
 import storeData from "../store/storeDataInitConfig"
 
+import { addUnit } from "../actions/services"
 const calculateRate = ({units}, {meterReading}) => {
     const subsidy = 150
     let cost = 0
@@ -155,6 +156,12 @@ export default (state=[], action) => {
                         clonedService.billData.dueDate = action.data.dueDate
                         clonedService.billData.billAmount = action.data.billAmount
                         clonedService.pastUpdates.push(pastUpdateData)
+
+                        const addUnitUpdates = {
+                            "serviceNo": action.data.serviceNo,
+                            "units": meterReading
+                        }
+                        dispatch(addUnit({...addUnitUpdates}))
                         return clonedService
                     }
                     return service
