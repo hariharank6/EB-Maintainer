@@ -1,15 +1,12 @@
-import React from "react"
-import { connect } from "react-redux"
-
 import { addService } from "../actions/services"
 import storeDataConfig from '../store/storeDataInitConfig'
 
 export const storeToStorage = (updatedStoreData) => {
   localStorage.setItem("storeData", JSON.stringify(updatedStoreData))
 }
-// console.log(34)
+
 export const storageToStore = (store) => {
-  let storeData = storeDataConfig
+  let storeData = storeDataConfig.services
   try {
     const storageStoreData = localStorage.getItem("storeData")
     if (storageStoreData != null) {
@@ -37,7 +34,7 @@ export const storageToStore = (store) => {
       localStorage.setItem("storeDataBackup", JSON.stringify(storeData))
     }
   }
-  for (const service of storeData.services) {
+  for (const service of storeData) {
     store.dispatch(addService(service))
   }
 }

@@ -40,23 +40,6 @@ const loadGapiScript = () => {
     })
 }
 
-async function getAccessToken() {
-    const url = appConfig.config.url.getAccessToken
-    const response = await fetch(url, {
-        method: "POST",
-        body: JSON.stringify({
-            client_id: appConfig.config.firebase.clientId,
-            client_secret: appConfig.config.firebase.clientSecret,
-            refresh_token: localStorage.getItem("token"),
-            grant_type: 'refresh_token'
-        })
-    })
-    const result = await response.json()
-    if (result && result.access_token) {
-        return result.access_token
-    }
-}
-
 async function getEmailIdentifiers() {
     return firebase.auth().currentUser.getIdToken(true).then((token) => {
         if(localStorage.getItem("userEmail")) {
@@ -121,6 +104,10 @@ async function startEmailSyncup(dispatch, services) {
     if (newBills && newBills.servicesData && newBills.servicesData.updateNeeded && newBills.servicesData.updateNeeded != newBills.servicesData.updatedCount) {
         setIconToShowFunc("syncing")
         await loadGapiScript()
+        if(typeof gapi == "undefined") {
+            console.log("reloading")
+            window.location.reload()
+        }
         await getEmailIdentifiers()
 
         let emailBatchTimeGapCount = 0

@@ -13,7 +13,6 @@ const getUser = (setIsSignedin) => {
         else {
             firebase.auth().onAuthStateChanged(function (user) {
                 if (user) {
-                    // User is signed in.
                     // firebase.auth().signOut().then(()=> {
                     //     console.log("signed out")
                     // })
@@ -33,10 +32,6 @@ const getUser = (setIsSignedin) => {
                     reject(null)
                 }
             });
-            // if ((localStorage.getItem("userEmail") && localStorage.getItem("token")) || (localStorage.getItem("isAnonymous") && localStorage.getItem("uid"))) {
-            //     return true
-            // }
-            // return false
         }
     })
 }
@@ -53,25 +48,18 @@ const initGoogleSignin = () => {
 
 const handleSignin = () => {
     firebase.auth().getRedirectResult().then(function (result) {
-        if (result.credential) {
-            // This gives you a Google Access Token. You can use it to access the Google API.
-            const token = result.credential.accessToken;
-            console.log("Access token:", token)
-            // ...
-        }
+        // if (result.credential) {
+        //     // This gives you a Google Access Token. You can use it to access the Google API.
+        //     const token = result.credential.accessToken;
+        //     console.log("Access token:", token)
+        //     // ...
+        // }
         // The signed-in user info.
         const user = result.user;
         if (user?.email && user.uid) {
             localStorage.setItem("userEmail", user.email)
-            // localStorage.setItem("token", user.refreshToken)
             localStorage.setItem("uid", user.uid)
-            // localStorage.removeItem("isGoogleSigninProgress")
-            // setIsSignedin && setIsSignedin("signedin")
         }
-        // else {
-        //     localStorage.setItem("isGoogleSigninProgress", false)
-        //     setIsSignedin && setIsSignedin()
-        // }
     }).catch(function (error) {
         // Handle Errors here.
         var errorCode = error.code;
@@ -80,11 +68,6 @@ const handleSignin = () => {
         var email = error.email;
         // The firebase.auth.AuthCredential type that was used.
         var credential = error.credential;
-        // if (localStorage.getItem("isGoogleSigninProgress") == "true") {
-        //     localStorage.setItem("isGoogleSigninProgress", false)
-        //     setIsSignedin && setIsSignedin()
-        // }
-        // ...
     });
 }
 
