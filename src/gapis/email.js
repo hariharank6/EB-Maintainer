@@ -1,5 +1,5 @@
 import moment from "moment"
-import * as firebase from 'firebase'
+import * as firebase from 'firebase/app'
 
 import appConfig from '../store/storeDataInitConfig'
 import { changeDateFormat, updateServicesInNeedOfData, newBills, clearNewBillData } from "../common/common"
@@ -41,14 +41,13 @@ const loadGapiScript = () => {
 }
 
 async function getEmailIdentifiers() {
-    return firebase.auth().currentUser.getIdToken(true).then((token) => {
+    return firebase.auth().currentUser.getIdToken().then((token) => {
         if(localStorage.getItem("userEmail")) {
             let result = gapi.client.gmail.users.messages.list({
                 'userId': localStorage.getItem("userEmail"),
                 'q': appConfig.config.email.emailQuery
             })
             result.execute((emailIdentifiers) => {
-                console.log(emailIdentifiers)
                 emailSyncData.emailIdentifiers = emailIdentifiers.messages
                 Promise.resolve()
             })
@@ -77,7 +76,6 @@ const dataScrapper = (vendor, message) => {
                 }
             }
         }
-        console.log("scrapped data:", messageData)
     }
     else {
         console.log("Invalid Vendor")
@@ -92,12 +90,10 @@ const getEmailData = (emailIdentifier, dataScrapper) => {
             'id': emailIdentifier
         })
         result.execute((emailData) => {
-            console.log("Email data:", emailData)
             dataScrapper(appConfig.config.email.emailVendor, emailData.snippet)
         })
     })
 }
-
 
 async function startEmailSyncup(dispatch, services) {
     updateServicesInNeedOfData(services)
@@ -127,8 +123,7 @@ async function startEmailSyncup(dispatch, services) {
                         setIconToShowFunc("failed")
                         let service
                         for (service of newBills.servicesData.services){
-                            let test = addBillData({...service})
-                            dispatch(test)
+                            dispatch(addBillData({...service}, dispatch))
                         }
                         clearNewBillData()
                     }
@@ -142,7 +137,7 @@ async function startEmailSyncup(dispatch, services) {
                 setIconToShowFunc("none")
                 let service
                 for (service of newBills.servicesData.services){
-                    dispatch(addBillData({...service}))
+                    dispatch(addBillData({...service}, dispatch))
                 }
                 clearNewBillData()
             }

@@ -1,5 +1,4 @@
 import * as firebase from 'firebase'
-import { initClient } from './email'
 import appConfig from '../store/storeDataInitConfig'
 
 firebase.initializeApp(appConfig.config.firebase)
@@ -13,9 +12,6 @@ const getUser = (setIsSignedin) => {
         else {
             firebase.auth().onAuthStateChanged(function (user) {
                 if (user) {
-                    // firebase.auth().signOut().then(()=> {
-                    //     console.log("signed out")
-                    // })
                     if(user.isAnonymous) {
                         localStorage.setItem("signinStatus", "guest")    
                         setIsSignedin("guest")
@@ -27,6 +23,9 @@ const getUser = (setIsSignedin) => {
                     resolve(user)
                 } else {
                     // No user is signed in.
+                    firebase.auth().signOut().then(()=> {
+                        console.log("signed out")
+                    })
                     localStorage.setItem("signinStatus", "unknown")
                     setIsSignedin("unknown")
                     reject(null)

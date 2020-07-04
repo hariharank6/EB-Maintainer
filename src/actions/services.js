@@ -47,12 +47,13 @@ const addBillData = ({
     billAmount = undefined, 
     dueDate = undefined, 
     serviceNo = undefined
-    }) => ({
+    }, dispatch) => ({
         type: "ADD_BILL_DATA",
         data: {
             billAmount,
             dueDate,
             serviceNo
-        }
+        },
+        dispatch
     })
 export {addService, addUnit, addAllUnits, addBillData}

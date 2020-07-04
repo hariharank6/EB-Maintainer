@@ -1,5 +1,6 @@
 import moment from "moment"
 import storeData from "../store/storeDataInitConfig"
+import {todaysDate} from '../common/common'
 
 import { addUnit } from "../actions/services"
 const calculateRate = ({units}, {meterReading}) => {
@@ -159,9 +160,12 @@ export default (state=[], action) => {
 
                         const addUnitUpdates = {
                             "serviceNo": action.data.serviceNo,
-                            "units": meterReading
+                            "units": meterReading,
+                            "entryDate": todaysDate()
                         }
-                        dispatch(addUnit({...addUnitUpdates}))
+                        setTimeout(()=> {
+                            action.dispatch(addUnit({...addUnitUpdates}))
+                        })
                         return clonedService
                     }
                     return service

@@ -68,23 +68,23 @@ const storeData = {
         "isValidEntry": true
       }
     },
-    // {
-    //   "nickname": "name-1055",
-    //   "serviceNo": 2150031055,
-    //   "entryDate": "15/04/2020",
-    //   "currencyCode": "₹",
-    //   "units": 130,
-    //   "rate": 0,
-    //   "pastUpdates": [],
-    //   "billData": {
-    //     "unitsConsumed": 80,
-    //     "meterReading": 110,
-    //     "billGeneratedDate": "12/04/2020",
-    //     "dueDate": "02/05/2020",
-    //     "billAmount": 0,
-    //     "isValidEntry": true
-    //   }
-    // },
+    {
+      "nickname": "name-1055",
+      "serviceNo": 2150031055,
+      "entryDate": "15/04/2020",
+      "currencyCode": "₹",
+      "units": 130,
+      "rate": 0,
+      "pastUpdates": [],
+      "billData": {
+        "unitsConsumed": 80,
+        "meterReading": 110,
+        "billGeneratedDate": "12/04/2020",
+        "dueDate": "02/05/2020",
+        "billAmount": 0,
+        "isValidEntry": true
+      }
+    },
     {
       "nickname": "name-1056",
       "serviceNo": 2150031056,
@@ -102,23 +102,23 @@ const storeData = {
         "isValidEntry": true
       }
     },
-    // {
-    //   "nickname": "name-717",
-    //   "serviceNo": 215003717,
-    //   "entryDate": "15/04/2020",
-    //   "currencyCode": "₹",
-    //   "units": 660,
-    //   "rate": 0,
-    //   "pastUpdates": [],
-    //   "billData": {
-    //     "unitsConsumed": 390,
-    //     "meterReading": 520,
-    //     "billGeneratedDate": "12/04/2020",
-    //     "dueDate": "02/05/2020",
-    //     "billAmount": 800,
-    //     "isValidEntry": true
-    //   }
-    // },
+    {
+      "nickname": "name-717",
+      "serviceNo": 215003717,
+      "entryDate": "15/04/2020",
+      "currencyCode": "₹",
+      "units": 660,
+      "rate": 0,
+      "pastUpdates": [],
+      "billData": {
+        "unitsConsumed": 390,
+        "meterReading": 520,
+        "billGeneratedDate": "12/04/2020",
+        "dueDate": "02/05/2020",
+        "billAmount": 800,
+        "isValidEntry": true
+      }
+    },
     {
       "nickname": "name-785",
       "serviceNo": 215003785,
