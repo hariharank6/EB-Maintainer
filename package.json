@@ -5,7 +5,9 @@
   "main": "webpack.config.js",
   "scripts": {
     "build": "webpack",
-    "start": "webpack-dev-server"
+    "start": "webpack-dev-server",
+    "deploy": "webpack && firebase deploy",
+    "stats": "webpack --json > stats.json"
   },
   "repository": {
     "type": "git",
@@ -23,6 +25,7 @@
     "@babel/preset-react": "^7.9.4",
     "@babel/runtime": "^7.10.3",
     "babel-loader": "^8.1.0",
+    "compression-webpack-plugin": "^4.0.0",
     "css-loader": "^3.5.3",
     "firebase": "^7.15.1",
     "firebase-tools": "^8.2.0",

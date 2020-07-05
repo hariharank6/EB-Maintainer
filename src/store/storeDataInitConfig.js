@@ -35,104 +35,104 @@ const storeData = {
     //   }
     // },
     {
-      "nickname": "name-1053",
-      "serviceNo": 2150031053,
-      "entryDate": "15/04/2020",
-      "currencyCode": "₹",
-      "units": 770,
-      "rate": 0,
-      "pastUpdates": [],
-      "billData": {
-        "unitsConsumed": 550,
-        "meterReading": 760,
-        "billGeneratedDate": "12/04/2020",
-        "dueDate": "02/05/2020",
-        "billAmount": 2110,
-        "isValidEntry": true
-      }
-    },
-    {
-      "nickname": "name-1054",
-      "serviceNo": 2150031054,
-      "entryDate": "15/04/2020",
-      "currencyCode": "₹",
-      "units": 470,
-      "rate": 0,
-      "pastUpdates": [],
-      "billData": {
-        "unitsConsumed": 330,
-        "meterReading": 460,
-        "billGeneratedDate": "12/04/2020",
-        "dueDate": "02/05/2020",
-        "billAmount": 620,
-        "isValidEntry": true
-      }
-    },
-    {
-      "nickname": "name-1055",
-      "serviceNo": 2150031055,
-      "entryDate": "15/04/2020",
-      "currencyCode": "₹",
-      "units": 130,
-      "rate": 0,
-      "pastUpdates": [],
-      "billData": {
-        "unitsConsumed": 80,
-        "meterReading": 110,
-        "billGeneratedDate": "12/04/2020",
-        "dueDate": "02/05/2020",
-        "billAmount": 0,
-        "isValidEntry": true
-      }
-    },
-    {
-      "nickname": "name-1056",
-      "serviceNo": 2150031056,
-      "entryDate": "15/04/2020",
-      "currencyCode": "₹",
-      "units": 462,
-      "rate": 0,
-      "pastUpdates": [],
-      "billData": {
-        "unitsConsumed": 190,
-        "meterReading": 250,
-        "billGeneratedDate": "12/04/2020",
-        "dueDate": "02/05/2020",
-        "billAmount": 155,
-        "isValidEntry": true
-      }
-    },
-    {
-      "nickname": "name-717",
+      "nickname": "Old-717",
       "serviceNo": 215003717,
-      "entryDate": "15/04/2020",
+      "entryDate": "11/06/2020",
       "currencyCode": "₹",
-      "units": 660,
+      "units": 1220,
       "rate": 0,
       "pastUpdates": [],
       "billData": {
-        "unitsConsumed": 390,
-        "meterReading": 520,
-        "billGeneratedDate": "12/04/2020",
-        "dueDate": "02/05/2020",
-        "billAmount": 800,
+        "unitsConsumed": 700,
+        "meterReading": 1220,
+        "billGeneratedDate": "11/06/2020",
+        "dueDate": "01/07/2020",
+        "billAmount": 560,
         "isValidEntry": true
       }
     },
     {
-      "nickname": "name-785",
+      "nickname": "Terrace-785",
       "serviceNo": 215003785,
-      "entryDate": "15/04/2020",
+      "entryDate": "11/06/2020",
       "currencyCode": "₹",
-      "units": 425,
+      "units": 1080,
       "rate": 0,
       "pastUpdates": [],
       "billData": {
-        "unitsConsumed": 180,
-        "meterReading": 280,
-        "billGeneratedDate": "12/04/2020",
-        "dueDate": "02/05/2020",
-        "billAmount": 140,
+        "unitsConsumed": 800,
+        "meterReading": 1080,
+        "billGeneratedDate": "11/06/2020",
+        "dueDate": "01/07/2020",
+        "billAmount": 1520,
+        "isValidEntry": true
+      }
+    },
+    {
+      "nickname": "1st floor-1053",
+      "serviceNo": 2150031053,
+      "entryDate": "11/06/2020",
+      "currencyCode": "₹",
+      "units": 1780,
+      "rate": 0,
+      "pastUpdates": [],
+      "billData": {
+        "unitsConsumed": 1020,
+        "meterReading": 1780,
+        "billGeneratedDate": "11/06/2020",
+        "dueDate": "01/07/2020",
+        "billAmount": 1582,
+        "isValidEntry": true
+      }
+    },
+    {
+      "nickname": "Home-1054",
+      "serviceNo": 2150031054,
+      "entryDate": "11/06/2020",
+      "currencyCode": "₹",
+      "units": 1130,
+      "rate": 0,
+      "pastUpdates": [],
+      "billData": {
+        "unitsConsumed": 670,
+        "meterReading": 1130,
+        "billGeneratedDate": "11/06/2020",
+        "dueDate": "01/07/2020",
+        "billAmount": 650,
+        "isValidEntry": true
+      }
+    },
+    {
+      "nickname": "Near home-1055",
+      "serviceNo": 2150031055,
+      "entryDate": "11/06/2020",
+      "currencyCode": "₹",
+      "units": 620,
+      "rate": 0,
+      "pastUpdates": [],
+      "billData": {
+        "unitsConsumed": 510,
+        "meterReading": 620,
+        "billGeneratedDate": "11/06/2020",
+        "dueDate": "01/07/2020",
+        "billAmount": 790,
+        "isValidEntry": true
+      }
+    },
+    {
+      "nickname": "Motor-1056",
+      "serviceNo": 2150031056,
+      "entryDate": "11/06/2020",
+      "currencyCode": "₹",
+      "units": 950,
+      "rate": 0,
+      "pastUpdates": [],
+      "billData": {
+        "unitsConsumed": 700,
+        "meterReading": 950,
+        "billGeneratedDate": "11/06/2020",
+        "dueDate": "01/07/2020",
+        "billAmount": 1205,
         "isValidEntry": true
       }
     }

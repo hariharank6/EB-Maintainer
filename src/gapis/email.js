@@ -1,5 +1,6 @@
 import moment from "moment"
-import * as firebase from 'firebase/app'
+import firebase from 'firebase/app'
+import 'firebase/auth'
 
 import appConfig from '../store/storeDataInitConfig'
 import { changeDateFormat, updateServicesInNeedOfData, newBills, clearNewBillData } from "../common/common"

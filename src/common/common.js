@@ -24,7 +24,6 @@ const changeDateFormat = (inputDate) => {
 }
 
 const updateServicesInNeedOfData = (services) => {
-    // update the global json here
     let service
     let updateNeededCount = 0
     for (service of services){
@@ -38,7 +37,6 @@ const updateServicesInNeedOfData = (services) => {
         }
     }
     newBills.servicesData.updateNeeded = updateNeededCount
-    // console.log("newBills", newBills)
 }
 
 const clearNewBillData = () => {

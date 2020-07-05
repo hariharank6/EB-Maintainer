@@ -1,8 +1,8 @@
 {
     "short_name": "Home EB",
-    "name": "EB Maintainer",
+    "name": "Electricity Tracker",
     "lang": "en",
-    "description": "EB Maintainer",
+    "description": "Electricity Tracker",
     "start_url": "https://electricity-tracker-personal.web.app/",
     "background_color": "#d1cde7",
     "theme_color": "#675b9f",
